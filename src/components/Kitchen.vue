@@ -19,6 +19,7 @@
       src="../assets/img/reloj-removebg-preview.png"
       alt=""
     />
+    <!-- Sound object  -->
     <figure class="cat">
       <img
         @click="play"
@@ -26,9 +27,12 @@
         v-if="state === true"
         src="../assets/img/cat.png"
       />
-      <figcaption v-if="state === true" class="cat-name">A cat</figcaption>
+      <figcaption v-if="state === true" class="cat-name">
+        A cat
+      </figcaption>
     </figure>
-
+    <!-- Sound object  -->
+    
     <button
       v-if="state === false"
       @click="playMode"
@@ -50,7 +54,6 @@
 <script>
 import { useSound } from "@vueuse/sound";
 import catSfx from "../assets/sound/kitty.wav";
-import SoundObject from "../components/SoundObject.vue";
 
 export default {
   data() {
@@ -58,9 +61,7 @@ export default {
       state: false,
     };
   },
-  components: {
-    SoundObject,
-  },
+ 
   setup() {
     const { play, stop } = useSound(catSfx);
 
@@ -102,9 +103,10 @@ export default {
   min-height: 12vw;
 }
 .cat-name {
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 2rem;
-    font-weight: 700;
+  font-family: Cambria, Cochin, Georgia, Times,
+    "Times New Roman", serif;
+  font-size: 2rem;
+  font-weight: 700;
 }
 .img-clock {
   z-index: 3;
