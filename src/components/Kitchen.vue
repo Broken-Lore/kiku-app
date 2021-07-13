@@ -1,55 +1,79 @@
 <template>
-    <div class="big-container">
+  <div class="big-container">
+    <img
+      class="img-kitchen"
+      v-if="state === false"
+      src="../assets/img/kitchen.png"
+      alt=""
+    />
+    <img
+      class="img-kitchen"
+      v-if="state === true"
+      src="../assets/img/kitchen-dim.png"
+      alt=""
+    />
 
-        <img class="img-kitchen" v-if="state===false" src="../assets/img/vistaCocina.png" alt="">
-        <img class="img-kitchen" v-if="state===true" src="../assets/img/KitchenViewDull.png" alt="">
-        
-        <button @click="playMode" class="btn-play">Play</button>
-    </div>
-
+    <button @click="playMode" class="btn-play">Play</button>
+  </div>
+  <SoundObject @click="play" @mouseleave="stop" label="Cat">
+    🐈
+  </SoundObject>
 </template>
 
 <script>
+import { useSound } from "@vueuse/sound";
+import catSfx from "../assets/sound/cat.wav";
+import SoundObject from "../components/SoundObject.vue";    
+
 export default {
-    data() {
-        return {
-            state: false
-        }
-        
+  data() {
+    return {
+      state: false,
+    };
+  },
+  components: {
+    SoundObject,
+  },
+  setup() {
+    const { play, stop } = useSound(catSfx);
+
+    return {
+      play,
+      stop,
+    };
+  },
+  methods: {
+    playMode() {
+      this.state = !this.state;
+      console.log(this.state);
     },
-    methods: {
-        playMode(){
-            this.state = !this.state
-            console.log(this.state)
-        }
-    }
-}
+  },
+};
 </script>
 
 <style scoped>
-    .big-container{
-        position:relative;
-        width: 100vw;
-        height: 100vh;
-    }
+.big-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
 
-    .img-kitchen{
-        width: 100vw;
-        height: auto;
-    }
+.img-kitchen {
+  width: 100vw;
+  height: auto;
+}
 
-    .btn-play{
-        font-size: 1.5rem;
-        width: 4rem;
-        height: 4rem;
-        border: none;
-        background-color: red;
-        z-index: 2;
-        position: absolute;
-        bottom: 10%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        cursor: pointer;
-        
-    }
+.btn-play {
+  font-size: 1.5rem;
+  width: 4rem;
+  height: 4rem;
+  border: none;
+  background-color: red;
+  z-index: 2;
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
 </style>
