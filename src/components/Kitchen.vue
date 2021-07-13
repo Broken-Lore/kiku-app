@@ -4,6 +4,7 @@
         <img class="img-kitchen" v-if="state===false" src="../assets/img/vistaCocina.png" alt="">
         <img class="img-kitchen" v-if="state===true" src="../assets/img/KitchenViewDull.png" alt="">
 
+         <img class="img-clock" v-if="state===true" src="../assets/img/reloj-removebg-preview.png" alt="">
         <img class="img-cat" v-if="state===true" src="../assets/img/cat.png">
         
         <button v-if="state===false" @click="playMode" class="btn-play">Play</button>
@@ -53,6 +54,21 @@ export default {
         left: 24vw;
         min-width: 12vw ;
         min-height: 12vw;
+    }
+
+    .img-clock{
+        z-index: 3;
+        position: absolute;
+        width: 7.8vw;
+        height: auto;
+        top:22.5%;
+        left: 32.5%;
+
+
+
+
+
+
     }
 
     .btn-play{
