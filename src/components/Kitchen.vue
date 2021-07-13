@@ -1,8 +1,10 @@
 <template>
     <div class="big-container">
-
+        
         <img class="img-kitchen" v-if="state===false" src="../assets/img/vistaCocina.png" alt="">
         <img class="img-kitchen" v-if="state===true" src="../assets/img/KitchenViewDull.png" alt="">
+
+        <img class="img-cat" v-if="state===true" src="../assets/img/cat.png">
         
         <button v-if="state===false" @click="playMode" class="btn-play">Play</button>
         <button v-if="state===true" @click="playMode" class="btn-back">Back</button>
@@ -34,13 +36,22 @@ export default {
     .big-container{
         font-family: 'Amatic SC', cursive;
         position:relative;
-        width: 100vw;
-        height: 100vh;
+        max-width: 100vw;
+        max-height: 100vh;
     }
 
     .img-kitchen{
         width: 100vw;
-        height: auto;
+        height: 100vh;
+    }
+
+    .img-cat{
+       
+        position:absolute;
+        bottom: 6vh;
+        left: 27vw;
+        min-width: 10vw ;
+        min-height: 10vw;
     }
 
     .btn-play{
@@ -67,17 +78,17 @@ export default {
     }
     .btn-back{
         font-family: 'Amatic SC', cursive;
-        font-size: 3rem;
+        font-size: 2rem;
         font-weight: 400;
-        width: 6rem;
-        height: 5rem;
+        width: 4rem;
+        height: 3rem;
         border: none;
         background-color: red;
         box-shadow: 1px 1px 10px gray ;
         border-radius: 10px;
         z-index: 2;
         position: absolute;
-        bottom: -10%;
+        bottom: 0%;
         left: 90%;
         transform: translate(-50%, -50%);
         cursor: pointer;
