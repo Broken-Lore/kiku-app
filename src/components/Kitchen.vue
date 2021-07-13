@@ -44,15 +44,16 @@ export default {
     .img-kitchen{
         width: 100vw;
         height: 100vh;
+        object-fit: cover;
     }
 
     .img-cat{
        
         position:absolute;
         bottom: 6vh;
-        left: 27vw;
-        min-width: 10vw ;
-        min-height: 10vw;
+        left: 24vw;
+        min-width: 12vw ;
+        min-height: 12vw;
     }
 
     .img-clock{
