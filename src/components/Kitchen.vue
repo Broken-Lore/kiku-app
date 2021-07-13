@@ -3,6 +3,8 @@
 
         <img class="img-kitchen" v-if="state===false" src="../assets/img/vistaCocina.png" alt="">
         <img class="img-kitchen" v-if="state===true" src="../assets/img/KitchenViewDull.png" alt="">
+
+         <img class="img-clock" v-if="state===true" src="../assets/img/reloj-removebg-preview.png" alt="">
         
         <button v-if="state===false" @click="playMode" class="btn-play">Play</button>
         <button v-if="state===true" @click="playMode" class="btn-back">Back</button>
@@ -41,6 +43,21 @@ export default {
     .img-kitchen{
         width: 100vw;
         height: auto;
+    }
+
+    .img-clock{
+        z-index: 3;
+        position: absolute;
+        width: 7.8vw;
+        height: auto;
+        top:22.5%;
+        left: 32.5%;
+
+
+
+
+
+
     }
 
     .btn-play{
