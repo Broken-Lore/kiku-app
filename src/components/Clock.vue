@@ -1,12 +1,11 @@
 <template>
   <figure class="clock">
     <img
-        class="img-clock"
-        v-if="state === true"
-        src="../assets/img/clock.png"
         @click="playClock"
+        class="img-clock"
+        src="../assets/img/clock.png"
     />
-    <figcaption v-if="state === true" class="clock-name">
+    <figcaption class="clock-name">
       A clock
     </figcaption>
   </figure>
@@ -30,12 +29,17 @@ export default {
 </script>
 
 <style scoped>
-.img-clock {
-  z-index: 3;
+
+.clock {
   position: absolute;
+  bottom: 59vh;
+  left: 19vw;
+  min-width: 15vw;
+  min-height: 15vw;
+}
+
+.img-clock {
   width: 7.8vw;
   height: auto;
-  top: 22.5%;
-  left: 32.5%;
 }
 </style>
