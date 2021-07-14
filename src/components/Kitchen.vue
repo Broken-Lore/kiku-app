@@ -23,6 +23,7 @@
     <figure class="cat">
       <img
         @click="play"
+        
         class="img-cat"
         v-if="state === true"
         src="../assets/img/cat.png"
