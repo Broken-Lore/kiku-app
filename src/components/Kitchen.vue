@@ -19,7 +19,7 @@
       src="../assets/img/reloj-removebg-preview.png"
       alt=""
     />
-    <!-- Sound object  -->
+  <!-- Sound object  -->
     <figure class="cat">
       <img
         @click="play"
@@ -30,6 +30,34 @@
       <figcaption v-if="state === true" class="cat-name">
         A cat
       </figcaption>
+    </figure>
+
+    <figure class="mixer">
+      <img
+        @click="playMixer"
+        class="img-mixer"
+        v-if="state === true"
+        src="../assets/img/mixing-removebg-preview.png"
+      />
+      
+    </figure>
+    <figure class="dog">
+      <img
+        @click="playDog"
+        class="img-dog"
+        v-if="state === true"
+        src="../assets/img/dog-removebg-preview.png"
+      />
+      
+    </figure>
+    <figure class="dog">
+      <img
+        @click="playPan"
+        class="img-pan"
+        v-if="state === true"
+        src="../assets/img/Pan.png"
+      />
+      
     </figure>
     <!-- Sound object  -->
     
@@ -58,6 +86,10 @@
 <script>
 
 import catSfx from "../assets/sound/kitty.wav";
+import mixerSfx from "../assets/sound/mixer.mp3";
+import dogSfx from "../assets/sound/dog.mp3";
+import panSfx from "../assets/sound/Pan.mp3";
+
 
 
 export default {
@@ -77,7 +109,26 @@ export default {
    
   
       cat.play()
-    }
+    },
+    playMixer(){
+      let mixer = new Audio(mixerSfx)
+   
+  
+      mixer.play()
+    },
+    playDog(){
+      let dog = new Audio(dogSfx)
+   
+  
+      dog.play()
+    },
+    playPan(){
+      let pan = new Audio(panSfx)
+   
+  
+      pan.play()
+    },
+
   },
    
 };
@@ -126,6 +177,32 @@ export default {
   top: 22.5%;
   left: 32.5%;
 }
+
+.img-mixer {
+  z-index: 3;
+  position: absolute;
+  width: 13vw;
+  height: auto;
+  top: 41.2%;
+  left: 29.8%;
+}
+.img-dog {
+  z-index: 3;
+  position: absolute;
+  width: 16vw;
+  height: auto;
+  top: 65.5%;
+  left: 35.5%;
+}
+.img-pan {
+  z-index: 3;
+  position: absolute;
+  width: 8.5vw;
+  height: auto;
+  top: 44.6%;
+  left: 85.5%;
+}
+
 
 .btn-play {
   font-family: "Amatic SC", cursive;
