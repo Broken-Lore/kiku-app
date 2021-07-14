@@ -15,6 +15,7 @@
 
     <Clock v-if="state === true"/>
     <Cat v-if="state === true"/>
+    <HotPan v-if="state === true"/>
 
     <button
       v-if="state === false"
@@ -39,11 +40,12 @@
 <script>
 import Clock from "./Clock.vue";
 import Cat from "./Cat.vue";
+import HotPan from "./HotPan.vue";
 
 export default {
   name: "Kitchen",
   components: {
-    Clock, Cat,
+    Clock, Cat, HotPan,
   },
   data() {
     return {
