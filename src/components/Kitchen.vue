@@ -12,9 +12,7 @@
       src="../assets/img/kitchen-dim.png"
       alt=""
     />
-    <Clock>
-
-    </Clock>
+    <Clock/>
     <!-- Sound object  -->
     <figure class="cat">
       <img
