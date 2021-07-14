@@ -12,14 +12,9 @@
       src="../assets/img/kitchen-dim.png"
       alt=""
     />
-
-    <img
-      class="img-clock"
-      v-if="state === true"
-      src="../assets/img/reloj-removebg-preview.png"
-      alt=""
-    />
-  <!-- Sound object  -->
+   
+    <Dog v-if="state === true"/>
+    <!-- Sound object  -->
     <figure class="cat">
       <img
         @click="play"
@@ -31,36 +26,8 @@
         A cat
       </figcaption>
     </figure>
-
-    <figure class="mixer">
-      <img
-        @click="playMixer"
-        class="img-mixer"
-        v-if="state === true"
-        src="../assets/img/mixing-removebg-preview.png"
-      />
-      
-    </figure>
-    <figure class="dog">
-      <img
-        @click="playDog"
-        class="img-dog"
-        v-if="state === true"
-        src="../assets/img/dog-removebg-preview.png"
-      />
-      
-    </figure>
-    <figure class="dog">
-      <img
-        @click="playPan"
-        class="img-pan"
-        v-if="state === true"
-        src="../assets/img/Pan.png"
-      />
-      
-    </figure>
     <!-- Sound object  -->
-    
+
     <button
       v-if="state === false"
       @click="playMode"
@@ -85,20 +52,22 @@
 
 <script>
 
-import catSfx from "../assets/sound/kitty.wav";
-import mixerSfx from "../assets/sound/mixer.mp3";
-import dogSfx from "../assets/sound/dog.mp3";
-import panSfx from "../assets/sound/Pan.mp3";
+import Dog from "./Dog.vue";
 
 
 
 export default {
+  name: "Kitchen",
+  components: {
+    
+    Dog
+  },
   data() {
     return {
       state: false,
     };
   },
-  
+
   methods: {
     playMode() {
       this.state = !this.state;
@@ -106,31 +75,10 @@ export default {
     },
     play(){
       let cat = new Audio(catSfx)
-   
-  
       cat.play()
     },
-    playMixer(){
-      let mixer = new Audio(mixerSfx)
-   
-  
-      mixer.play()
-    },
-    playDog(){
-      let dog = new Audio(dogSfx)
-   
-  
-      dog.play()
-    },
-    playPan(){
-      let pan = new Audio(panSfx)
-   
-  
-      pan.play()
-    },
-
+    
   },
-   
 };
 </script>
 
@@ -159,7 +107,6 @@ export default {
 }
 
 .img-cat{
-  
   width: 12vw;
   height: 12vw;
 }
@@ -169,40 +116,6 @@ export default {
   font-size: 2rem;
   font-weight: 700;
 }
-.img-clock {
-  z-index: 3;
-  position: absolute;
-  width: 7.8vw;
-  height: auto;
-  top: 22.5%;
-  left: 32.5%;
-}
-
-.img-mixer {
-  z-index: 3;
-  position: absolute;
-  width: 13vw;
-  height: auto;
-  top: 41.2%;
-  left: 29.8%;
-}
-.img-dog {
-  z-index: 3;
-  position: absolute;
-  width: 16vw;
-  height: auto;
-  top: 65.5%;
-  left: 35.5%;
-}
-.img-pan {
-  z-index: 3;
-  position: absolute;
-  width: 8.5vw;
-  height: auto;
-  top: 44.6%;
-  left: 85.5%;
-}
-
 
 .btn-play {
   font-family: "Amatic SC", cursive;
