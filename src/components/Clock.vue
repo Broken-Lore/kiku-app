@@ -19,6 +19,10 @@ export default {
   name: 'Clock',
 
   methods: {
+     playMode() {
+      this.state = !this.state;
+      console.log(this.state);
+    },
     playClock(){
       let clock = new Audio(clockSfx)
       clock.play()
