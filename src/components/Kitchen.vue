@@ -48,12 +48,17 @@
     >
       Back
     </button>
+
+     
   </div>
 </template>
 
+
+
 <script>
-import { useSound } from "@vueuse/sound";
+
 import catSfx from "../assets/sound/kitty.wav";
+
 
 export default {
   data() {
@@ -61,21 +66,20 @@ export default {
       state: false,
     };
   },
- 
-  setup() {
-    const { play, stop } = useSound(catSfx);
-
-    return {
-      play,
-      stop,
-    };
-  },
+  
   methods: {
     playMode() {
       this.state = !this.state;
       console.log(this.state);
     },
+    play(){
+      let cat = new Audio(catSfx)
+   
+  
+      cat.play()
+    }
   },
+   
 };
 </script>
 
@@ -97,10 +101,16 @@ export default {
 
 .cat {
   position: absolute;
-  bottom: 6vh;
-  left: 24vw;
-  min-width: 12vw;
-  min-height: 12vw;
+  bottom: -1vh;
+  left: 19vw;
+  min-width: 15vw;
+  min-height: 15vw;
+}
+
+.img-cat{
+  
+  width: 12vw;
+  height: 12vw;
 }
 .cat-name {
   font-family: Cambria, Cochin, Georgia, Times,
