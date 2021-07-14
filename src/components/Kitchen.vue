@@ -12,13 +12,9 @@
       src="../assets/img/kitchen-dim.png"
       alt=""
     />
+    <Clock>
 
-    <img
-      class="img-clock"
-      v-if="state === true"
-      src="../assets/img/reloj-removebg-preview.png"
-      alt=""
-    />
+    </Clock>
     <!-- Sound object  -->
     <figure class="cat">
       <img
@@ -32,7 +28,7 @@
       </figcaption>
     </figure>
     <!-- Sound object  -->
-    
+
     <button
       v-if="state === false"
       @click="playMode"
@@ -56,17 +52,20 @@
 
 
 <script>
-
+import Clock from "./Clock.vue";
 import catSfx from "../assets/sound/kitty.wav";
 
-
 export default {
+  name: "Kitchen",
+  components: {
+    Clock
+  },
   data() {
     return {
       state: false,
     };
   },
-  
+
   methods: {
     playMode() {
       this.state = !this.state;
@@ -74,12 +73,9 @@ export default {
     },
     play(){
       let cat = new Audio(catSfx)
-   
-  
       cat.play()
-    }
+    },
   },
-   
 };
 </script>
 
@@ -108,7 +104,6 @@ export default {
 }
 
 .img-cat{
-  
   width: 12vw;
   height: 12vw;
 }
@@ -117,14 +112,6 @@ export default {
     "Times New Roman", serif;
   font-size: 2rem;
   font-weight: 700;
-}
-.img-clock {
-  z-index: 3;
-  position: absolute;
-  width: 7.8vw;
-  height: auto;
-  top: 22.5%;
-  left: 32.5%;
 }
 
 .btn-play {
