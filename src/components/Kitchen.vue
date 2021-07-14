@@ -22,7 +22,7 @@
     <!-- Sound object  -->
     <figure class="cat">
       <img
-        @click="play"
+        @click="playCat"
         class="img-cat"
         v-if="state === true"
         src="../assets/img/cat.png"
@@ -32,7 +32,21 @@
       </figcaption>
     </figure>
     <!-- Sound object  -->
-    
+
+<!-- Sound object  -->
+    <figure class="kettle">
+      <img
+        @click="playKettle"
+        class="img-kettle"
+        v-if="state === true"
+        src="../assets/img/kettle.png"
+      />
+      <figcaption v-if="state === true" class="kettle-name">
+        A kettle
+      </figcaption>
+    </figure>
+    <!-- Sound object  -->
+
     <button
       v-if="state === false"
       @click="playMode"
@@ -48,17 +62,12 @@
     >
       Back
     </button>
-
-     
   </div>
 </template>
 
-
-
 <script>
-
 import catSfx from "../assets/sound/kitty.wav";
-
+import kettleSfx from "../assets/sound/kettle.mp3";
 
 export default {
   data() {
@@ -66,20 +75,21 @@ export default {
       state: false,
     };
   },
-  
+
   methods: {
     playMode() {
       this.state = !this.state;
       console.log(this.state);
     },
-    play(){
-      let cat = new Audio(catSfx)
-   
-  
-      cat.play()
-    }
+    playCat() {
+      let cat = new Audio(catSfx);
+      cat.play();
+    },
+     playKettle() {
+      let kettle = new Audio(kettleSfx);
+      kettle.play();
+    },
   },
-   
 };
 </script>
 
@@ -107,8 +117,7 @@ export default {
   min-height: 15vw;
 }
 
-.img-cat{
-  
+.img-cat {
   width: 12vw;
   height: 12vw;
 }
@@ -126,7 +135,17 @@ export default {
   top: 22.5%;
   left: 32.5%;
 }
-
+.kettle {
+  position: absolute;
+  left: 38vw;
+  top: 33vw;
+  /* min-width: 15vw;
+  min-height: 15vw; */
+}
+.img-kettle {
+  width: 9vw;
+  height: auto;
+}
 .btn-play {
   font-family: "Amatic SC", cursive;
   font-size: 5rem;
