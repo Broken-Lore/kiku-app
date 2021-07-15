@@ -31,6 +31,7 @@ export default {
   color: #ffff;
   position: absolute;
   margin-left: 40px;
+  margin-top: 40px;
   letter-spacing: 15px;
 }
 
@@ -38,6 +39,7 @@ export default {
   width: 35rem;
   height: 35rem;
   margin-left: 400px;
+  margin-top: 40px;
 }
 
 .tap{
