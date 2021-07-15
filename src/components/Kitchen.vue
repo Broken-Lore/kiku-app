@@ -14,6 +14,7 @@
     />
    
     <Dog v-if="state === true"/>
+    <Mixer v-if="state === true"/>
     <!-- Sound object  -->
     <figure class="cat">
       <img
@@ -53,13 +54,14 @@
 <script>
 
 import Dog from "./Dog.vue";
+import Mixer from "./Mixer.vue";
 
 
 
 export default {
   name: "Kitchen",
   components: {
-    
+    Mixer,
     Dog
   },
   data() {

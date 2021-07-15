@@ -9,29 +9,40 @@
     </figure> 
  </template>
 
+
+
+
  <script>
+   import dogSfx from "@/assets/sound/dog.mp3";
  export default {
      name:"Dog",
 
 methods:{
- playDog(){
-
-      let dog = new Audio(dogSfx)
-
-dog.play()
+   playMode() {
+      this.state = !this.state;
+      console.log(this.state);
     },
-    }
-
- }
+    playDog(){
+      let dog = new Audio(dogSfx)
+      dog.play()
+    },
+    
+  },
+};
  </script>
  
  <style scoped>
-   .cat {
+  .dog {
   position: absolute;
-  bottom: -1vh;
-  left: 19vw;
-  min-width: 15vw;
-  min-height: 15vw;
+  bottom: 11vh;
+  left: 31vw;
+  width: 9vw;
+ 
+ 
+}
+.img-dog{
+  width: 16vw;
+  height: 16vw;
 }
 
  </style>
