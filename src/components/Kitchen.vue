@@ -18,6 +18,7 @@
     <HotPan v-if="state === true" />
     <Dog v-if="state === true" />
     <Mixer v-if="state === true" />
+    <Kettle v-if="state === true" />
 
     <button
       v-if="state === false"
@@ -43,6 +44,7 @@ import Cat from "./Cat.vue";
 import HotPan from "./HotPan.vue";
 import Dog from "./Dog.vue";
 import Mixer from "./Mixer.vue";
+import Kettle from "./Kettle.vue";
 
 export default {
   name: "Kitchen",
@@ -52,13 +54,13 @@ export default {
     HotPan,
     Mixer,
     Dog,
+    Kettle,
   },
   data() {
     return {
       state: false,
     };
   },
-
   methods: {
     playMode() {
       this.state = !this.state;
