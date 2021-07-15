@@ -11,6 +11,7 @@
     "@vueuse/sound": "^1.1.7",
     "core-js": "^3.6.5",
     "vue": "^3.0.0",
+    "vue-demi": "^0.10.1",
     "vue-router": "^4.0.0-0",
     "vue-use-sound": "^1.1.1",
     "vuex": "^4.0.0-0"
