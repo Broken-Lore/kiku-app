@@ -28,6 +28,7 @@
     >
       Play
     </button>
+
     <button
       v-if="state === true"
       @click="playMode"
