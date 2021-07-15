@@ -13,26 +13,10 @@
       alt=""
     />
 
-    <img
-      class="img-clock"
-      v-if="state === true"
-      src="../assets/img/reloj-removebg-preview.png"
-      alt=""
-    />
-    <!-- Sound object  -->
-    <figure class="cat">
-      <img
-        @click="play"
-        class="img-cat"
-        v-if="state === true"
-        src="../assets/img/cat.png"
-      />
-      <figcaption v-if="state === true" class="cat-name">
-        A cat
-      </figcaption>
-    </figure>
-    <!-- Sound object  -->
-    
+    <Clock v-if="state === true"/>
+    <Cat v-if="state === true"/>
+    <HotPan v-if="state === true"/>
+
     <button
       v-if="state === false"
       @click="playMode"
@@ -49,37 +33,32 @@
       Back
     </button>
 
-     
   </div>
 </template>
 
 
-
 <script>
-
-import catSfx from "../assets/sound/kitty.wav";
-
+import Clock from "./Clock.vue";
+import Cat from "./Cat.vue";
+import HotPan from "./HotPan.vue";
 
 export default {
+  name: "Kitchen",
+  components: {
+    Clock, Cat, HotPan,
+  },
   data() {
     return {
       state: false,
     };
   },
-  
+
   methods: {
     playMode() {
       this.state = !this.state;
       console.log(this.state);
     },
-    play(){
-      let cat = new Audio(catSfx)
-   
-  
-      cat.play()
-    }
   },
-   
 };
 </script>
 
@@ -97,34 +76,6 @@ export default {
   width: 100vw;
   height: 100vh;
   object-fit: cover;
-}
-
-.cat {
-  position: absolute;
-  bottom: -1vh;
-  left: 19vw;
-  min-width: 15vw;
-  min-height: 15vw;
-}
-
-.img-cat{
-  
-  width: 12vw;
-  height: 12vw;
-}
-.cat-name {
-  font-family: Cambria, Cochin, Georgia, Times,
-    "Times New Roman", serif;
-  font-size: 2rem;
-  font-weight: 700;
-}
-.img-clock {
-  z-index: 3;
-  position: absolute;
-  width: 7.8vw;
-  height: auto;
-  top: 22.5%;
-  left: 32.5%;
 }
 
 .btn-play {
@@ -161,7 +112,7 @@ export default {
   border-radius: 10px;
   z-index: 2;
   position: absolute;
-  bottom: 0%;
+  bottom: 0;
   left: 90%;
   transform: translate(-50%, -50%);
   cursor: pointer;
