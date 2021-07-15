@@ -19,33 +19,8 @@
       src="../assets/img/reloj-removebg-preview.png"
       alt=""
     />
-    <!-- Sound object  -->
-    <figure class="cat">
-      <img
-        @click="playCat"
-        class="img-cat"
-        v-if="state === true"
-        src="../assets/img/cat.png"
-      />
-      <figcaption v-if="state === true" class="cat-name">
-        A cat
-      </figcaption>
-    </figure>
-    <!-- Sound object  -->
 
-<!-- Sound object  -->
-    <figure class="kettle">
-      <img
-        @click="playKettle"
-        class="img-kettle"
-        v-if="state === true"
-        src="../assets/img/kettle.png"
-      />
-      <figcaption v-if="state === true" class="kettle-name">
-        A kettle
-      </figcaption>
-    </figure>
-    <!-- Sound object  -->
+    <Kettle v-if="state === true" />
 
     <button
       v-if="state === false"
@@ -66,10 +41,14 @@
 </template>
 
 <script>
-import catSfx from "../assets/sound/kitty.wav";
-import kettleSfx from "../assets/sound/kettle.mp3";
+import Kettle from "./Kettle.vue";
 
 export default {
+  name: "Kitchen",
+  components: {
+    Kettle,
+  },
+
   data() {
     return {
       state: false,
@@ -80,14 +59,6 @@ export default {
     playMode() {
       this.state = !this.state;
       console.log(this.state);
-    },
-    playCat() {
-      let cat = new Audio(catSfx);
-      cat.play();
-    },
-     playKettle() {
-      let kettle = new Audio(kettleSfx);
-      kettle.play();
     },
   },
 };
@@ -102,49 +73,10 @@ export default {
   max-width: 100vw;
   max-height: 100vh;
 }
-
 .img-kitchen {
   width: 100vw;
   height: 100vh;
   object-fit: cover;
-}
-
-.cat {
-  position: absolute;
-  bottom: -1vh;
-  left: 19vw;
-  min-width: 15vw;
-  min-height: 15vw;
-}
-
-.img-cat {
-  width: 12vw;
-  height: 12vw;
-}
-.cat-name {
-  font-family: Cambria, Cochin, Georgia, Times,
-    "Times New Roman", serif;
-  font-size: 2rem;
-  font-weight: 700;
-}
-.img-clock {
-  z-index: 3;
-  position: absolute;
-  width: 7.8vw;
-  height: auto;
-  top: 22.5%;
-  left: 32.5%;
-}
-.kettle {
-  position: absolute;
-  left: 38vw;
-  top: 33vw;
-  /* min-width: 15vw;
-  min-height: 15vw; */
-}
-.img-kettle {
-  width: 9vw;
-  height: auto;
 }
 .btn-play {
   font-family: "Amatic SC", cursive;
