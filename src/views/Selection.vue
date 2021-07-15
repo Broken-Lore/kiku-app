@@ -1,13 +1,38 @@
 <template>
+<div class="">
   <div class="container">
-    <div class="scenesgrid">
-      <div class="scenes">
+    
+      <div class="scenes kitchen">
         <h2 class="sceneName">kitchen</h2> 
       </div>
+    
+      <div class="scenes house">
+        <h2 class="sceneName">In my House</h2> 
+      </div>
+    
+    
+      <div class="scenes park">
+        <h2 class="sceneName">Playing in the Park</h2> 
+      
+    </div>
+    
+      <div class="scenes parking">
+        <h2 class="sceneName">Walking on the city</h2> 
+      </div>
+    
+    
+      <div class="scenes travelling">
+        <h2 class="sceneName">Travelling</h2> 
+      </div>
+    
+    
+      <div class="scenes ...">
+        <h2 class="sceneName">...</h2> 
+      
     </div>
       <p class="selectTxt">Select your favorite scene</p>
   </div>
-
+</div>
 </template>
 
 <script>
@@ -24,17 +49,25 @@ export default {
 <style scoped>
 
 .container {
-  background-color:#4ABDAC;
+  
   width: 100vw;
   height: 100vh;
-  padding: 11%;
-  max-width: 77vw;
-  max-height: 66vh;
+  max-width: 92vw;
+  max-height: 85vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-row-gap: 15px;
+  position: relative;
+  padding: 3%;
+  align-items:center;
+  justify-items:center;
+
 }
 
 .scenes {
-
-  background-color: #cd9af0;
+  background-image: url(../assets/img/kitchen.png);
+  background-size: cover;
+  background-position: center;
   width: 20vw;
   height: 23vh;
   border-radius:20px;
@@ -42,8 +75,14 @@ export default {
   display:flex;
   align-items: center;
   justify-content: center;
+}
+
+.house{
+  background-image: url(../assets/img/vistacalle.png);
 
 }
+
+
 
 .sceneName {
   font-size: 3rem;
@@ -53,9 +92,8 @@ export default {
 .selectTxt{
   font-size: 5rem;
   display:flex;
+  position: absolute;
   justify-content: center;
-  align-items:baseline
-  
 }
 </style>
 
