@@ -29,7 +29,7 @@ export default {
 .hotPan {
   position: absolute;
   bottom: 32.5vh;
-  right: -1vh;
+  right: 1vh;
   min-width: 15vw;
   min-height: 15vw;
 }
