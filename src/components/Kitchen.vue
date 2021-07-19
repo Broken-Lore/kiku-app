@@ -13,12 +13,15 @@
       alt=""
     />
 
-    <Clock v-if="state === true" />
-    <Cat v-if="state === true" />
-    <HotPan v-if="state === true" />
-    <Dog v-if="state === true" />
-    <Mixer v-if="state === true" />
-    <Kettle v-if="state === true" />
+    <Clock @scoreMounter="scoreMount"  v-if="state === true" />
+    <Cat @scoreMounter="scoreMount"  v-if="state === true" />
+    <HotPan @scoreMounter="scoreMount"   v-if="state === true" />
+    <Dog @scoreMounter="scoreMount"   v-if="state === true" />
+    <Mixer @scoreMounter="scoreMount"   v-if="state === true" />
+    <Kettle @scoreMounter="scoreMount"   v-if="state === true" />
+
+    
+    <p v-if="state === true" class="ct-score">score : {{scoreCounter}} </p>
 
     <button
       v-if="state === false"
@@ -60,6 +63,7 @@ export default {
   data() {
     return {
       state: false,
+      scoreCounter: 0
     };
   },
   methods: {
@@ -67,6 +71,9 @@ export default {
       this.state = !this.state;
       console.log(this.state);
     },
+    scoreMount(){
+      this.scoreCounter += 100
+    }
   },
 };
 </script>
@@ -128,5 +135,14 @@ export default {
 .btn-back:hover {
   background-color: rgb(255, 77, 77);
   filter: drop-shadow(1px 1px 10px rgb(241, 79, 79));
+}
+
+.ct-score{
+  position: absolute;
+  font-size: 2.5rem;
+  font-weight: 600;
+  top: 0rem;
+  margin: 1rem 0;
+  right: 2rem;
 }
 </style>

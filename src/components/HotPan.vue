@@ -20,6 +20,7 @@ export default {
     playHotPan() {
       let hotPlan = new Audio(hotPanSfx);
       hotPlan.play();
+      this.$emit('scoreMounter')
     },
   },
 };

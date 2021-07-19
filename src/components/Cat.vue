@@ -18,11 +18,14 @@ import catSfx from "@/assets/sound/cat.wav";
 export default {
   name: 'Cat',
 
+
   methods: {
     playCat(){
       let cat = new Audio(catSfx)
       cat.play()
-    }
+      this.$emit('scoreMounter')
+    },
+    
   }
 }
 

@@ -22,6 +22,7 @@ export default {
     playMixer() {
       let mixer = new Audio(mixerSfx);
       mixer.play();
+      this.$emit('scoreMounter')
     },
   },
 };

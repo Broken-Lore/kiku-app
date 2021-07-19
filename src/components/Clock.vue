@@ -25,6 +25,7 @@ export default {
     playClock() {
       let clock = new Audio(clockSfx);
       clock.play();
+      this.$emit('scoreMounter')
     },
   },
 };

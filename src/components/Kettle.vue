@@ -21,6 +21,7 @@ export default {
     playKettle() {
       let kettle = new Audio(kettleSfx);
       kettle.play();
+      this.$emit('scoreMounter')
     },
   },
 };

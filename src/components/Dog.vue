@@ -20,6 +20,7 @@ export default {
     playDog() {
       let dog = new Audio(dogSfx);
       dog.play();
+      this.$emit('scoreMounter')
     },
   },
 };
