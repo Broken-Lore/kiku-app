@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import hotPanSfx from "@/assets/sound/pan.mp3";
+import hotPanSfx from "@/assets/sound/Pan.mp3";
 
 export default {
   name: "HotPan",
