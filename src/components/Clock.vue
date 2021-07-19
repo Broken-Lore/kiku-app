@@ -1,0 +1,44 @@
+<template>
+  <figure class="clock">
+    <img
+      @click="playClock"
+      class="img-clock"
+      src="../assets/img/clock.png"
+    />
+    <figcaption class="clock-name">
+      A clock
+    </figcaption>
+  </figure>
+</template>
+
+<script>
+import clockSfx from "@/assets/sound/clock.mp3";
+
+export default {
+  name: "Clock",
+
+  methods: {
+    playMode() {
+      this.state = !this.state;
+      console.log(this.state);
+    },
+    playClock() {
+      let clock = new Audio(clockSfx);
+      clock.play();
+    },
+  },
+};
+</script>
+
+<style scoped>
+.clock {
+  position: absolute;
+  bottom: 55vh;
+  left: 25vw;
+}
+
+.img-clock {
+  width: 9.8vw;
+  height: auto;
+}
+</style>

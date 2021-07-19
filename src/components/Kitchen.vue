@@ -13,27 +13,13 @@
       alt=""
     />
 
-    <img
-      class="img-clock"
-      v-if="state === true"
-      src="../assets/img/reloj-removebg-preview.png"
-      alt=""
-    />
-    <!-- Sound object  -->
-    <figure class="cat">
-      <img
-        @click="play"
-        
-        class="img-cat"
-        v-if="state === true"
-        src="../assets/img/cat.png"
-      />
-      <figcaption v-if="state === true" class="cat-name">
-        A cat
-      </figcaption>
-    </figure>
-    <!-- Sound object  -->
-    
+    <Clock v-if="state === true" />
+    <Cat v-if="state === true" />
+    <HotPan v-if="state === true" />
+    <Dog v-if="state === true" />
+    <Mixer v-if="state === true" />
+    <Kettle v-if="state === true" />
+
     <button
       v-if="state === false"
       @click="playMode"
@@ -42,6 +28,7 @@
     >
       Play
     </button>
+
     <button
       v-if="state === true"
       @click="playMode"
@@ -49,38 +36,38 @@
     >
       Back
     </button>
-
-     
   </div>
 </template>
 
-
-
 <script>
-
-import catSfx from "../assets/sound/kitty.wav";
-
+import Clock from "./Clock.vue";
+import Cat from "./Cat.vue";
+import HotPan from "./HotPan.vue";
+import Dog from "./Dog.vue";
+import Mixer from "./Mixer.vue";
+import Kettle from "./Kettle.vue";
 
 export default {
+  name: "Kitchen",
+  components: {
+    Clock,
+    Cat,
+    HotPan,
+    Mixer,
+    Dog,
+    Kettle,
+  },
   data() {
     return {
       state: false,
     };
   },
-  
   methods: {
     playMode() {
       this.state = !this.state;
       console.log(this.state);
     },
-    play(){
-      let cat = new Audio(catSfx)
-   
-  
-      cat.play()
-    }
   },
-   
 };
 </script>
 
@@ -93,41 +80,11 @@ export default {
   max-width: 100vw;
   max-height: 100vh;
 }
-
 .img-kitchen {
   width: 100vw;
   height: 100vh;
   object-fit: cover;
 }
-
-.cat {
-  position: absolute;
-  bottom: -1vh;
-  left: 19vw;
-  min-width: 15vw;
-  min-height: 15vw;
-}
-
-.img-cat{
-  
-  width: 12vw;
-  height: 12vw;
-}
-.cat-name {
-  font-family: Cambria, Cochin, Georgia, Times,
-    "Times New Roman", serif;
-  font-size: 2rem;
-  font-weight: 700;
-}
-.img-clock {
-  z-index: 3;
-  position: absolute;
-  width: 7.8vw;
-  height: auto;
-  top: 22.5%;
-  left: 32.5%;
-}
-
 .btn-play {
   font-family: "Amatic SC", cursive;
   font-size: 5rem;
@@ -162,13 +119,12 @@ export default {
   border-radius: 10px;
   z-index: 2;
   position: absolute;
-  bottom: 0%;
+  bottom: 0;
   left: 90%;
   transform: translate(-50%, -50%);
   cursor: pointer;
   transition: all ease 0.5s;
 }
-
 .btn-back:hover {
   background-color: rgb(255, 77, 77);
   filter: drop-shadow(1px 1px 10px rgb(241, 79, 79));
