@@ -1,16 +1,17 @@
 <template>
   <div class="">
     <div class="container">
-      
       <router-link to="/kitchen" class="tap">
         <div class="scenes kitchen">
           <h2 class="sceneName">kitchen</h2>
         </div>
       </router-link>
 
-      <div class="scenes house">
-        <h2 class="sceneName">In my House</h2>
-      </div>
+      <router-link to="/clip-path" class="tap">
+        <div class="scenes house">
+          <h2 class="sceneName">In my House</h2>
+        </div>
+        </router-link>
 
       <div class="scenes park">
         <h2 class="sceneName">Playing in the Park</h2>

@@ -12,13 +12,14 @@
       src="../assets/img/kitchen-dim.png"
       alt=""
     />
-
-    <Clock v-if="state === true" />
-    <Cat v-if="state === true" />
-    <HotPan v-if="state === true" />
-    <Dog v-if="state === true" />
-    <Mixer v-if="state === true" />
-    <Kettle v-if="state === true" />
+    <div v-if="state === true">
+      <Clock />
+      <Cat />
+      <HotPan />
+      <Dog />
+      <Mixer />
+      <Kettle />
+    </div>
 
     <button
       v-if="state === false"
@@ -39,12 +40,12 @@
 </template>
 
 <script>
-import Clock from "./Clock.vue";
-import Cat from "./Cat.vue";
-import HotPan from "./HotPan.vue";
-import Dog from "./Dog.vue";
-import Mixer from "./Mixer.vue";
-import Kettle from "./Kettle.vue";
+import Clock from "../components/Clock.vue";
+import Cat from "../components/Cat.vue";
+import HotPan from "../components/HotPan.vue";
+import Dog from "../components/Dog.vue";
+import Mixer from "../components/Mixer.vue";
+import Kettle from "../components/Kettle.vue";
 
 export default {
   name: "Kitchen",
