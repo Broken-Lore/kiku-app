@@ -1,7 +1,7 @@
 <template>
   <figure class="dog">
     <img
-      @click="playDog"
+      @click="playDog(); scoreMount()"
       class="img-dog"
       src="../assets/img/dog-removebg-preview.png"
     />
@@ -20,8 +20,12 @@ export default {
     playDog() {
       let dog = new Audio(dogSfx);
       dog.play();
-      this.$emit('scoreMounter')
+     
     },
+
+    scoreMount(){
+       this.$emit('scoreMounter')
+    }
   },
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <figure class="clock">
     <img
-      @click="playClock"
+      @click="playClock(); scoreMount() "
       class="img-clock"
       src="../assets/img/clock.png"
     />
@@ -25,8 +25,12 @@ export default {
     playClock() {
       let clock = new Audio(clockSfx);
       clock.play();
-      this.$emit('scoreMounter')
+      
     },
+
+    scoreMount(){
+       this.$emit('scoreMounter')
+    }
   },
 };
 </script>

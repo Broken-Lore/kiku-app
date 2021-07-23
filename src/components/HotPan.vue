@@ -1,7 +1,7 @@
 <template>
   <figure class="hotPan">
     <img
-      @click="playHotPan"
+      @click="playHotPan(); scoreMount()"
       class="img-hotPan"
       src="../assets/img/hotPanImg.png"
     />
@@ -20,8 +20,12 @@ export default {
     playHotPan() {
       let hotPlan = new Audio(hotPanSfx);
       hotPlan.play();
-      this.$emit('scoreMounter')
+ 
     },
+
+    scoreMount(){
+       this.$emit('scoreMounter')
+    }
   },
 };
 </script>

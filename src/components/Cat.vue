@@ -1,7 +1,7 @@
 <template>
   <figure class="cat">
     <img
-        @click="playCat"
+        @click="playCat(); scoreMount()"
         class="img-cat"
         src="../assets/img/cat.png"
     />
@@ -23,8 +23,12 @@ export default {
     playCat(){
       let cat = new Audio(catSfx)
       cat.play()
-      this.$emit('scoreMounter')
+     
     },
+
+    scoreMount(){
+       this.$emit('scoreMounter')
+    }
     
   }
 }

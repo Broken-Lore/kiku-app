@@ -1,7 +1,7 @@
 <template>
   <figure class="mixer">
     <img
-      @click="playMixer"
+      @click="playMixer(); scoreMount()"
       class="img-mixer"
       src="../assets/img/mixer.png"
     />
@@ -22,8 +22,12 @@ export default {
     playMixer() {
       let mixer = new Audio(mixerSfx);
       mixer.play();
-      this.$emit('scoreMounter')
+  
     },
+
+    scoreMount(){
+       this.$emit('scoreMounter')
+    }
   },
 };
 </script>
