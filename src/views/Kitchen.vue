@@ -80,11 +80,13 @@ export default {
   max-width: 100vw;
   max-height: 100vh;
 }
+
 .img-kitchen {
   width: 100vw;
   height: 100vh;
   object-fit: cover;
 }
+
 .btn-play {
   font-family: "Amatic SC", cursive;
   font-size: 5rem;
@@ -103,10 +105,12 @@ export default {
   cursor: pointer;
   transition: all ease 0.5s;
 }
+
 .btn-play:hover {
   background-color: rgb(255, 77, 77);
   filter: drop-shadow(1px 1px 10px rgb(241, 79, 79));
 }
+
 .btn-back {
   font-family: "Amatic SC", cursive;
   font-size: 2rem;
@@ -125,6 +129,7 @@ export default {
   cursor: pointer;
   transition: all ease 0.5s;
 }
+
 .btn-back:hover {
   background-color: rgb(255, 77, 77);
   filter: drop-shadow(1px 1px 10px rgb(241, 79, 79));
