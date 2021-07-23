@@ -1,7 +1,7 @@
 <template>
   <figure class="cat">
     <img
-        @click="playCat"
+        @click="playCat(); scoreMount()"
         class="img-cat"
         src="../assets/img/cat.png"
     />
@@ -18,11 +18,18 @@ import catSfx from "@/assets/sound/cat.wav";
 export default {
   name: 'Cat',
 
+
   methods: {
     playCat(){
       let cat = new Audio(catSfx)
       cat.play()
+     
+    },
+
+    scoreMount(){
+       this.$emit('scoreMounter')
     }
+    
   }
 }
 
