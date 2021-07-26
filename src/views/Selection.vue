@@ -1,11 +1,15 @@
 <template>
   <div class="">
     <div class="container">
-      
-      <router-link to="/kitchen" class="tap">
+      <transition name="fade">
+        <div class="modal-overlay"></div>
+      </transition>
+      <router-link to="/kitchen" class="tap" id="show-modal" @click="showModal = true">
+        
         <div class="scenes kitchen">
           <h2 class="sceneName">kitchen</h2>
         </div>
+        
       </router-link>
 
       <div class="scenes house">
@@ -28,6 +32,7 @@
         <h2 class="sceneName">...</h2>
       </div>
       <p class="selectTxt">Select your favorite scene</p>
+      
     </div>
   </div>
 </template>
@@ -102,5 +107,9 @@ export default {
   text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff,
     0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff,
     1px -1px 0 #fff, -1px 1px 0 #fff;
+}
+
+fade-enter{
+
 }
 </style>
