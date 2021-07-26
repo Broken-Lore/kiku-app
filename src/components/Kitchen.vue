@@ -19,7 +19,6 @@
     <Dog @scoreMounter="scoreMount"   v-if="state === true" />
     <Mixer @scoreMounter="scoreMount"   v-if="state === true" />
     <Kettle @scoreMounter="scoreMount"   v-if="state === true" />
-
     
     <p v-if="state === true" class="ct-score">score : {{scoreCounter}} </p>
 
