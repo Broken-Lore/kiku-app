@@ -13,15 +13,17 @@
       alt=""
     />
     <div v-if="state === true">
-      <Clock />
-      <Cat />
-      <HotPan />
-      <Dog />
-      <Mixer />
-      <Kettle />
+      <Clock  @scoreMounter="scoreMount"/>
+      <Cat    @scoreMounter="scoreMount"/>
+      <HotPan @scoreMounter="scoreMount"/>
+      <Dog    @scoreMounter="scoreMount"/>
+      <Mixer  @scoreMounter="scoreMount"/>
+      <Kettle @scoreMounter="scoreMount"/>
     </div>
 
-    <button
+    <p v-if="state === true" class="ct-score">score : {{ scoreCounter }} </p>
+
+    <button 
       v-if="state === false"
       @click="playMode"
       @mouseleave="stop"
@@ -29,6 +31,7 @@
     >
       Play
     </button>
+
     <button
       v-if="state === true"
       @click="playMode"
@@ -40,11 +43,11 @@
 </template>
 
 <script>
-import Clock from "../components/Clock.vue";
-import Cat from "../components/Cat.vue";
+import Clock  from "../components/Clock.vue";
+import Cat    from "../components/Cat.vue";
 import HotPan from "../components/HotPan.vue";
-import Dog from "../components/Dog.vue";
-import Mixer from "../components/Mixer.vue";
+import Dog    from "../components/Dog.vue";
+import Mixer  from "../components/Mixer.vue";
 import Kettle from "../components/Kettle.vue";
 
 export default {
@@ -60,6 +63,7 @@ export default {
   data() {
     return {
       state: false,
+      scoreCounter: 0
     };
   },
   methods: {
@@ -67,6 +71,9 @@ export default {
       this.state = !this.state;
       console.log(this.state);
     },
+    scoreMount(){
+      this.scoreCounter += 100
+    }
   },
 };
 </script>
@@ -133,5 +140,14 @@ export default {
 .btn-back:hover {
   background-color: rgb(255, 77, 77);
   filter: drop-shadow(1px 1px 10px rgb(241, 79, 79));
+}
+
+.ct-score{
+  position: absolute;
+  font-size: 2.5rem;
+  font-weight: 600;
+  top: 0rem;
+  margin: 1rem 0;
+  right: 2rem;
 }
 </style>

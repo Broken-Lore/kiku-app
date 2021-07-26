@@ -1,12 +1,5 @@
 <template>
-  <figure class="cat">
-    <img
-      @click="playCat(); scoreMount();"
-      class="img-cat"
-      src="../assets/img/cat.png"
-    />
-    <figcaption class="cat-name">A cat</figcaption>
-  </figure>
+  
 </template>
 
 <script>

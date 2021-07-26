@@ -1,7 +1,7 @@
 <template>
   <figure class="kettle">
     <img
-      @click="playKettle"
+      @click="playKettle(); scoreMount()"
       class="img-kettle"
       src="../assets/img/kettle.png"
     />
@@ -21,7 +21,12 @@ export default {
     playKettle() {
       let kettle = new Audio(kettleSfx);
       kettle.play();
+
     },
+
+    scoreMount(){
+       this.$emit('scoreMounter')
+    }
   },
 };
 </script>
