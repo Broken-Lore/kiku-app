@@ -2,6 +2,7 @@
   <figure class="cat">
     <img
       @click="playCat(); scoreMount();"
+      @mouseleave="pauseCat"
       class="img-cat"
       src="../assets/img/cat.png"
     />
@@ -13,15 +14,22 @@
 import catSfx from "@/assets/sound/cat.wav";
 export default {
   name: "Cat",
+  data() {
+    return {
+      cat: null
+    }
+  },
   methods: {
     playCat() {
-      let cat = new Audio(catSfx);
-      cat.play();
+      this.cat.paused ? this.cat.play() : this.cat.pause();
     },
     scoreMount() {
       this.$emit("scoreMounter");
-    },
+    }
   },
+    mounted: function() {
+      this.cat = new Audio(catSfx);
+    }
 };
 </script>
 

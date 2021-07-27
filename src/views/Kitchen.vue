@@ -13,17 +13,17 @@
       alt=""
     />
     <div v-if="state === true">
-      <Clock  @scoreMounter="scoreMount"/>
-      <Cat    @scoreMounter="scoreMount"/>
-      <HotPan @scoreMounter="scoreMount"/>
-      <Dog    @scoreMounter="scoreMount"/>
-      <Mixer  @scoreMounter="scoreMount"/>
-      <Kettle @scoreMounter="scoreMount"/>
+      <Clock @scoreMounter="scoreMount" />
+      <Cat @scoreMounter="scoreMount" />
+      <HotPan @scoreMounter="scoreMount" />
+      <Dog @scoreMounter="scoreMount" />
+      <Mixer @scoreMounter="scoreMount" />
+      <Kettle @scoreMounter="scoreMount" />
     </div>
 
-    <p v-if="state === true" class="ct-score">score : {{ scoreCounter }} </p>
+    <p v-if="state === true" class="ct-score">score : {{ scoreCounter }}</p>
 
-    <button 
+    <button
       v-if="state === false"
       @click="playMode"
       @mouseleave="stop"
@@ -32,22 +32,22 @@
       Play
     </button>
 
-    <button
-      v-if="state === true"
-      @click="playMode"
-      class="btn-back"
-    >
+    <button v-if="state === true" @click="playMode" class="btn-back">
+      Back
+    </button>
+
+    <button v-if="state === true" @click="playMode" class="btn-back">
       Back
     </button>
   </div>
 </template>
 
 <script>
-import Clock  from "../components/Clock.vue";
-import Cat    from "../components/Cat.vue";
+import Clock from "../components/Clock.vue";
+import Cat from "../components/Cat.vue";
 import HotPan from "../components/HotPan.vue";
-import Dog    from "../components/Dog.vue";
-import Mixer  from "../components/Mixer.vue";
+import Dog from "../components/Dog.vue";
+import Mixer from "../components/Mixer.vue";
 import Kettle from "../components/Kettle.vue";
 
 export default {
@@ -63,17 +63,19 @@ export default {
   data() {
     return {
       state: false,
-      scoreCounter: 0
+      generalScore: null,
+      scoreCounter: 0,
+      clickCounter: 0,
     };
   },
   methods: {
     playMode() {
       this.state = !this.state;
-      console.log(this.state);
+      return this.state;
     },
-    scoreMount(){
-      this.scoreCounter += 100
-    }
+    scoreMount() {
+      this.scoreCounter += 10;
+    },
   },
 };
 </script>
@@ -142,7 +144,7 @@ export default {
   filter: drop-shadow(1px 1px 10px rgb(241, 79, 79));
 }
 
-.ct-score{
+.ct-score {
   position: absolute;
   font-size: 2.5rem;
   font-weight: 600;
