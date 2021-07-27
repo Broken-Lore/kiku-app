@@ -71,14 +71,14 @@ export default {
 }
 
 .house {
-  background-image: url(../assets/img/vistacalle.png);
+  background-image: url(../assets/img/streetTransport.png);
 }
 
 .park {
   background-image: url(../assets/img/kitchen.png);
 }
 .city {
-  background-image: url(../assets/img/vistacalle.png);
+  background-image: url(../assets/img/streetTransport.png);
 }
 .travelling {
   background-image: url(../assets/img/kitchen.png);

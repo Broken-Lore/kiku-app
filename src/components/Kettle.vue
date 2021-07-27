@@ -32,13 +32,5 @@ export default {
 </script>
 
 <style scoped>
-.kettle {
-  position: absolute;
-  left: 38vw;
-  top: 33vw;
-}
-.img-kettle {
-  width: 9vw;
-  height: auto;
-}
+
 </style>

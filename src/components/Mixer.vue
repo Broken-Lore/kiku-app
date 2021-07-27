@@ -33,14 +33,5 @@ export default {
 </script>
 
 <style scoped>
-.mixer {
-  position: absolute;
-  bottom: 38.5vh;
-  left: 25.2vw;
-  width: 9vw;
-}
-.img-mixer {
-  width: 13vw;
-  height: 13vw;
-}
+
 </style>

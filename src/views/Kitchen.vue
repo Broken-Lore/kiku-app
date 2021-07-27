@@ -2,29 +2,29 @@
   <div class="big-container">
     <img
       class="img-kitchen"
-      v-if="state === false"
+      v-if="gameOn === false"
       src="../assets/img/kitchen.png"
       alt=""
     />
     <img
       class="img-kitchen"
-      v-if="state === true"
+      v-if="gameOn === true"
       src="../assets/img/kitchen-dim.png"
       alt=""
     />
-    <div v-if="state === true">
-      <Clock @scoreMounter="scoreMount" />
-      <Cat @scoreMounter="scoreMount" />
-      <HotPan @scoreMounter="scoreMount" />
-      <Dog @scoreMounter="scoreMount" />
-      <Mixer @scoreMounter="scoreMount" />
-      <Kettle @scoreMounter="scoreMount" />
+    <div v-if="gameOn === true">
+      <SoundObject objectName="cat" @scoreMounter="scoreMount" />
+      <SoundObject objectName="clock" @scoreMounter="scoreMount" />
+      <SoundObject objectName="dog" @scoreMounter="scoreMount" />
+      <SoundObject objectName="kettle" @scoreMounter="scoreMount" />
+      <SoundObject objectName="mixer" @scoreMounter="scoreMount" />
+      <SoundObject objectName="pan" @scoreMounter="scoreMount" />
     </div>
 
-    <p v-if="state === true" class="ct-score">score : {{ scoreCounter }}</p>
+    <p v-if="gameOn === true" class="score">score : {{ scoreCounter }}</p>
 
     <button
-      v-if="state === false"
+      v-if="gameOn === false"
       @click="playMode"
       @mouseleave="stop"
       class="btn-play"
@@ -32,49 +32,40 @@
       Play
     </button>
 
-    <button v-if="state === true" @click="playMode" class="btn-back">
+    <button v-if="gameOn === true" @click="playMode" class="btn-back">
       Back
     </button>
 
-    <button v-if="state === true" @click="playMode" class="btn-back">
+    <button v-if="gameOn === true" @click="playMode" class="btn-back">
       Back
     </button>
   </div>
 </template>
 
 <script>
-import Clock from "../components/Clock.vue";
-import Cat from "../components/Cat.vue";
-import HotPan from "../components/HotPan.vue";
-import Dog from "../components/Dog.vue";
-import Mixer from "../components/Mixer.vue";
-import Kettle from "../components/Kettle.vue";
+
+import SoundObject from "../components/SoundObject.vue";
 
 export default {
   name: "Kitchen",
   components: {
-    Clock,
-    Cat,
-    HotPan,
-    Mixer,
-    Dog,
-    Kettle,
+    SoundObject
   },
   data() {
     return {
-      state: false,
-      generalScore: null,
+      gameOn: false,
       scoreCounter: 0,
-      clickCounter: 0,
+      scores: [10, 5, 3, 1],
     };
   },
   methods: {
     playMode() {
-      this.state = !this.state;
-      return this.state;
+      this.gameOn = !this.gameOn;
+      return this.gameOn;
     },
-    scoreMount() {
-      this.scoreCounter += 10;
+    scoreMount(clickCount) {
+      console.log(clickCount);
+      this.scoreCounter += this.scores[clickCount] || 0;
     },
   },
 };
@@ -82,20 +73,17 @@ export default {
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap");
-
 .big-container {
   font-family: "Amatic SC", cursive;
   position: relative;
   max-width: 100vw;
   max-height: 100vh;
 }
-
 .img-kitchen {
   width: 100vw;
   height: 100vh;
   object-fit: cover;
 }
-
 .btn-play {
   font-family: "Amatic SC", cursive;
   font-size: 5rem;
@@ -114,12 +102,10 @@ export default {
   cursor: pointer;
   transition: all ease 0.5s;
 }
-
 .btn-play:hover {
   background-color: rgb(255, 77, 77);
   filter: drop-shadow(1px 1px 10px rgb(241, 79, 79));
 }
-
 .btn-back {
   font-family: "Amatic SC", cursive;
   font-size: 2rem;
@@ -138,13 +124,11 @@ export default {
   cursor: pointer;
   transition: all ease 0.5s;
 }
-
 .btn-back:hover {
   background-color: rgb(255, 77, 77);
   filter: drop-shadow(1px 1px 10px rgb(241, 79, 79));
 }
-
-.ct-score {
+.score {
   position: absolute;
   font-size: 2.5rem;
   font-weight: 600;

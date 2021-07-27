@@ -36,14 +36,5 @@ export default {
 </script>
 
 <style scoped>
-.clock {
-  position: absolute;
-  bottom: 55vh;
-  left: 25vw;
-}
 
-.img-clock {
-  width: 9.8vw;
-  height: auto;
-}
 </style>

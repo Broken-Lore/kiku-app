@@ -1,9 +1,9 @@
 <template>
-  <figure class="hotPan">
+  <figure class="pan">
     <img
       @click="playHotPan(); scoreMount()"
       class="img-hotPan"
-      src="../assets/img/hotPanImg.png"
+      src="../assets/img/pan.png"
     />
     <figcaption class="hotPan-name">
       A Hot Pan
@@ -12,14 +12,14 @@
 </template>
 
 <script>
-import hotPanSfx from "@/assets/sound/Pan.mp3";
+import panSfx from "@/assets/sound/pan.mp3";
 
 export default {
-  name: "HotPan",
+  name: "Pan",
   methods: {
     playHotPan() {
-      let hotPlan = new Audio(hotPanSfx);
-      hotPlan.play();
+      let hotPlan = new Audio(panSfx);
+      pan.play();
  
     },
 
@@ -31,16 +31,5 @@ export default {
 </script>
 
 <style scoped>
-.hotPan {
-  position: absolute;
-  bottom: 32.5vh;
-  right: 1vh;
-  min-width: 15vw;
-  min-height: 15vw;
-}
 
-.img-hotPan {
-  width: 7.8vw;
-  height: auto;
-}
 </style>
