@@ -29,7 +29,7 @@ export default {
     },
 
     scoreMount(){
-       this.$emit('scoreMounter')
+        this.$emit('scoreMounter')
     }
   },
 };

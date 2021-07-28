@@ -1,15 +1,17 @@
 <template>
-  <div class="">
+  <div class="box">
+    <!-- <button
+      @click="showModal === true"
+      class="modal">how to play</button> -->
+      <Modal>
+        <p>intruction</p>
+      </Modal>
     <div class="container">
-      <transition name="fade">
-        <div class="modal-overlay"></div>
-      </transition>
-      <router-link to="/kitchen" class="tap" id="show-modal" @click="showModal = true">
-        
+      
+      <router-link to="/kitchen" class="tap">
         <div class="scenes kitchen">
           <h2 class="sceneName">kitchen</h2>
         </div>
-        
       </router-link>
 
       <div class="scenes house">
@@ -32,15 +34,31 @@
         <h2 class="sceneName">...</h2>
       </div>
       <p class="selectTxt">Select your favorite scene</p>
-      
     </div>
   </div>
 </template>
 
 <script>
+
+import Modal from "../components/Modal.vue";
+
 export default {
   name: "Home",
-  components: {},
+  components: {
+    Modal
+  },
+ /*  data() {
+    return {
+      modal: false,
+    };
+  },
+ */
+  /* methods: {
+    openModal() {
+      this.modal = !this.modal;
+      console.log(this.modal);
+    }
+  }, */
 };
 </script>
 <style scoped>
@@ -108,8 +126,9 @@ export default {
     0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff,
     1px -1px 0 #fff, -1px 1px 0 #fff;
 }
-
-fade-enter{
-
+button{
+  display: flex;
+  justify-content: flex-end;
 }
+
 </style>
