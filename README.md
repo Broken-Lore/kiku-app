@@ -52,6 +52,6 @@ npm run test:unit
 ## Thanks 🎁
 
 If you want to see our application I can scan our QR
-![qr code for the app page](src/img/QrApp.png)
+![qr code for the app page](src/assets/img/QrApp.png)
 
-or visit our webside https://broken-lore.github.io/kiku-app
+or visit our website https://broken-lore.github.io/kiku-app
