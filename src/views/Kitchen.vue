@@ -1,86 +1,77 @@
 <template>
   <div class="big-container">
     <img
+      v-if="gameOn === false"
       class="img-kitchen"
-      v-if="state === false"
       src="../assets/img/kitchen.png"
-      alt=""
+      alt="illustration of a kitchen with its appliances, a cat, a dog and a cook"
     />
     <img
+      v-if="gameOn === true"
       class="img-kitchen"
-      v-if="state === true"
       src="../assets/img/kitchen-dim.png"
-      alt=""
+      alt="illustration of a kitchen with its appliances, a cat, a dog and a cook"
     />
+    <div v-if="gameOn === true">
+      <SoundObject objectName="cat" @scoreMounter="scoreMount" ref="cat"/>
+      <SoundObject objectName="clock" @scoreMounter="scoreMount" />
+      <SoundObject objectName="dog" @scoreMounter="scoreMount" />
+      <SoundObject objectName="kettle" @scoreMounter="scoreMount" />
+      <SoundObject objectName="mixer" @scoreMounter="scoreMount" />
+      <SoundObject objectName="pan" @scoreMounter="scoreMount" />
+    </div>
 
-    <Clock @scoreMounter="scoreMount"  v-if="state === true" />
-    <Cat @scoreMounter="scoreMount"  v-if="state === true" />
-    <HotPan @scoreMounter="scoreMount"   v-if="state === true" />
-    <Dog @scoreMounter="scoreMount"   v-if="state === true" />
-    <Mixer @scoreMounter="scoreMount"   v-if="state === true" />
-    <Kettle @scoreMounter="scoreMount"   v-if="state === true" />
-
-    
-    <p v-if="state === true" class="ct-score">score : {{scoreCounter}} </p>
+    <p v-if="gameOn === true" class="score"> score : {{ scoreCounter }} </p>
 
     <button
-      v-if="state === false"
+      v-if="gameOn === false"
       @click="playMode"
-      @mouseleave="stop"
       class="btn-play"
     >
       Play
     </button>
 
-    <button
-      v-if="state === true"
-      @click="playMode"
-      class="btn-back"
-    >
+    <button v-if="gameOn === true" @click="playMode" class="btn-back">
+      Back
+    </button>
+
+    <button v-if="gameOn === true" @click="playMode" class="btn-back">
       Back
     </button>
   </div>
 </template>
 
 <script>
-import Clock from "./Clock.vue";
-import Cat from "./Cat.vue";
-import HotPan from "./HotPan.vue";
-import Dog from "./Dog.vue";
-import Mixer from "./Mixer.vue";
-import Kettle from "./Kettle.vue";
+
+import SoundObject from "../components/SoundObject.vue";
 
 export default {
   name: "Kitchen",
   components: {
-    Clock,
-    Cat,
-    HotPan,
-    Mixer,
-    Dog,
-    Kettle,
+    SoundObject
   },
   data() {
     return {
-      state: false,
-      scoreCounter: 0
+      gameOn: false,
+      scoreCounter: 0,
+      scores: [10, 5, 3, 1],
     };
   },
   methods: {
     playMode() {
-      this.state = !this.state;
-      console.log(this.state);
+      this.gameOn = !this.gameOn;
+      return this.gameOn;
     },
-    scoreMount(){
-      this.scoreCounter += 100
-    }
+    scoreMount(clickCount) {
+      console.log(clickCount);
+      this.scoreCounter += this.scores[clickCount] || 0;
+    },
   },
 };
 </script>
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap");
-
 .big-container {
   font-family: "Amatic SC", cursive;
   position: relative;
@@ -136,8 +127,7 @@ export default {
   background-color: rgb(255, 77, 77);
   filter: drop-shadow(1px 1px 10px rgb(241, 79, 79));
 }
-
-.ct-score{
+.score {
   position: absolute;
   font-size: 2.5rem;
   font-weight: 600;
