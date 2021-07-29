@@ -10,7 +10,7 @@
 
             <div class="modal-body">
                 <slot name="body">
-                    Tap the element to hear his sound
+                    watch the video to see how play
                 </slot>
             </div>
 
@@ -81,7 +81,7 @@ export default {
     width: 500px;
     height: 200px;
     color: black;
-    font-size: 30px;
+    font-size: 20px;
     font-weight: bold;
     visibility: hidden;
     opacity: 0;
@@ -97,12 +97,20 @@ export default {
     border-radius: 5px;
     cursor: pointer;
 }
+.modal-header{
+    margin: 7px;
+}
+.modal-body{
+    width: 500px;
+    height: 120px;
+}
 
 .modal-footer{
     display: flex;
     justify-content: flex-end;
     align-content: flex-end;
-    margin-right: 10px;
-    
+    margin-right: 20px;
 }
+
+@media (min-width: 1440px)
 </style>
