@@ -90,17 +90,14 @@ export default {
 body {
   margin: 0px;
 }
-
 .image-container {
-  max-width: 100%;
+  max-width: 100vw;
   position: relative;
 }
-
 .base {
-  width: 100%;
+  width: 100vw;
   position: relative;
   z-index: 0;
-  /* object-fit: cover; */
 }
 .filter {
   filter: grayscale(var(--value, 100%));

@@ -9,10 +9,9 @@
       :class="imgClass"
       :src="images[objectName]"
     />
-    <!-- <figcaption class="name">A {{ objectName }}</figcaption> -->
+    <p class="name">A {{ objectName }}</p>
   </div>
 </template>
-
 
 <script>
 import catSfx from "@/assets/sound/cat.wav";
@@ -67,6 +66,7 @@ export default {
   },
   methods: {
     playSound() {
+
       if (!this.sound) return;
       this.sound.paused ? this.sound.play() : this.sound.pause();
     },
@@ -88,7 +88,7 @@ export default {
 <style scoped>
 .name {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  font-size: 2rem;
+  font-size: 1rem;
   font-weight: 700;
 }
 .floater {
