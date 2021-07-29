@@ -1,33 +1,39 @@
 <template>
-  <div class="big-container">
+  <div class="image-container">
     <img
       v-if="gameOn === false"
-      class="img-kitchen"
-      src="../assets/img/kitchen.png"
+      class="base"
+      src="../assets/img/kitchen-back.png"
       alt="illustration of a kitchen with its appliances, a cat, a dog and a cook"
     />
     <img
       v-if="gameOn === true"
-      class="img-kitchen"
-      src="../assets/img/kitchen-dim.png"
+      class="base filter"
+      src="../assets/img/kitchen-back.png"
       alt="illustration of a kitchen with its appliances, a cat, a dog and a cook"
     />
+    <div v-if="gameOn === false">
+      <SoundObject objectName="cat" />
+      <SoundObject objectName="clock" />
+      <SoundObject objectName="dog" />
+      <SoundObject objectName="fridge" />
+      <SoundObject objectName="kettle"/>
+      <SoundObject objectName="mixer" />
+      <SoundObject objectName="pan" />
+    </div>
     <div v-if="gameOn === true">
-      <SoundObject objectName="cat" @scoreMounter="scoreMount" ref="cat"/>
+      <SoundObject objectName="cat" @scoreMounter="scoreMount" />
       <SoundObject objectName="clock" @scoreMounter="scoreMount" />
       <SoundObject objectName="dog" @scoreMounter="scoreMount" />
+      <SoundObject objectName="fridge" @scoreMounter="scoreMount" />
       <SoundObject objectName="kettle" @scoreMounter="scoreMount" />
       <SoundObject objectName="mixer" @scoreMounter="scoreMount" />
       <SoundObject objectName="pan" @scoreMounter="scoreMount" />
     </div>
 
-    <p v-if="gameOn === true" class="score"> score : {{ scoreCounter }} </p>
+    <p v-if="gameOn === true" class="score">score : {{ scoreCounter }}</p>
 
-    <button
-      v-if="gameOn === false"
-      @click="playMode"
-      class="btn-play"
-    >
+    <button v-if="gameOn === false" @click="playMode" class="btn-play">
       Play
     </button>
 
@@ -44,13 +50,12 @@
 </template>
 
 <script>
-
 import SoundObject from "../components/SoundObject.vue";
 
 export default {
   name: "Kitchen",
   components: {
-    SoundObject
+    SoundObject,
   },
   data() {
     return {
@@ -74,16 +79,31 @@ export default {
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap");
-.big-container {
+/* .big-container {
   font-family: "Amatic SC", cursive;
   position: relative;
   max-width: 100vw;
-  max-height: 100vh;
 }
 .img-kitchen {
+  position: relative;
   width: 100vw;
-  height: 100vh;
-  object-fit: cover;
+ object-fit: cover;
+} */
+body {
+  margin: 0px;
+}
+.image-container {
+  max-width: 100vw;
+  position: relative;
+}
+.base {
+  width: 100vw;
+  position: relative;
+  z-index: 0;
+}
+.filter {
+  filter: grayscale(var(--value, 100%));
+  --value: 100%;
 }
 .btn-play {
   font-family: "Amatic SC", cursive;

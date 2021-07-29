@@ -1,15 +1,10 @@
 <template>
   <div class="box">
     <div class="button-content">
-      <button
-        @click="openModal()"
-        class="modal-button">
-        how to play
-      </button>
-    </div>    
-      <Modal ref="modal">
-      </Modal>
-    
+      <button @click="openModal()" class="modal-button">how to play</button>
+    </div>
+    <Modal ref="modal"> </Modal>
+
     <div class="container">
       <router-link to="/kitchen" class="tap">
         <div class="scenes kitchen">
@@ -21,7 +16,7 @@
         <div class="scenes house">
           <h2 class="sceneName">In my House</h2>
         </div>
-        </router-link>
+      </router-link>
 
       <router-link to="" class="tap">
         <div class="scenes park">
@@ -46,28 +41,26 @@
           <h2 class="sceneName">...</h2>
         </div>
       </router-link>
-        <p class="selectTxt">Select your favorite scene</p>
+      <p class="selectTxt">Select your favorite scene</p>
     </div>
   </div>
 </template>
 
 <script>
-
 import Modal from "../components/Modal.vue";
 
 export default {
   name: "Home",
-  
-  components: {
-    Modal
-  },
-  methods:{
-    openModal(){
-      const modal = document.getElementById('modal');
-      modal.classList.add("show")
-    }
-  }
 
+  components: {
+    Modal,
+  },
+  methods: {
+    openModal() {
+      const modal = document.getElementById("modal");
+      modal.classList.add("show");
+    },
+  },
 };
 </script>
 <style scoped>
@@ -120,9 +113,8 @@ export default {
 
 .sceneName {
   font-size: 3rem;
-  text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff,
-    0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff,
-    1px -1px 0 #fff, -1px 1px 0 #fff;
+  text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff,
+    1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
   cursor: pointer;
 }
 
@@ -132,16 +124,15 @@ export default {
   position: absolute;
   justify-content: center;
   font-weight: 600;
-  text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff,
-    0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff,
-    1px -1px 0 #fff, -1px 1px 0 #fff;
+  text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff,
+    1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
 }
-.button-content{
+.button-content {
   display: flex;
   justify-content: flex-end;
   cursor: pointer;
 }
-.modal-button{
+.modal-button {
   text-decoration: none;
   border: none;
   font-size: 20px;
@@ -151,10 +142,9 @@ export default {
   width: 140px;
   margin-top: 15px;
   margin-right: 100px;
-  border-radius: 10px;  
+  border-radius: 10px;
 }
-.tap{
+.tap {
   text-decoration: none;
 }
-
 </style>
