@@ -1,12 +1,12 @@
-import { shallowMount } from '@vue/test-utils'
-import HelloWorld from '@/components/HelloWorld.vue'
+import { mount } from '@vue/test-utils'
+import Cat from '@/components/Cat.vue'
 
-describe('HelloWorld.vue', () => {
-  it('renders props.msg when passed', () => {
-    const msg = 'new message'
-    const wrapper = shallowMount(HelloWorld, {
-      props: { msg }
+// Let’s write our first test.
+
+
+describe('Cat.vue', () => {
+    // Inspect the raw component options
+    it('has data', () => {
+        expect(typeof Cat.data).toBe('function')
     })
-    expect(wrapper.text()).toMatch(msg)
-  })
 })
