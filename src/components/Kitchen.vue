@@ -19,7 +19,7 @@
     <Dog @scoreMounter="scoreMount"   v-if="state === true" />
     <Mixer @scoreMounter="scoreMount"   v-if="state === true" />
     <Kettle @scoreMounter="scoreMount"   v-if="state === true" />
-    
+
     <p v-if="state === true" class="ct-score">score : {{scoreCounter}} </p>
 
     <button
@@ -140,7 +140,7 @@ export default {
   position: absolute;
   font-size: 2.5rem;
   font-weight: 600;
-  top: 0rem;
+  top: 0;
   margin: 1rem 0;
   right: 2rem;
 }
