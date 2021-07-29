@@ -21,13 +21,13 @@ how our app works:
 
 ## Authors ✒️
 
-* **Franco calviño** - [GitHub](#https://github.com/Francocalvino)
-* **Gabriela Baquerizo** - [GitHub](#https://github.com/gbaquerizo13)
-* **Anya Kholodenko** - [GitHub](#https://github.com/a-xo)
-* **Leah Calafell** - [GitHub](#https://github.com/leahcalafell97)
+* **Franco calviño** - [GitHub](https://github.com/Francocalvino)
+* **Gabriela Baquerizo** - [GitHub](https://github.com/gbaquerizo13)
+* **Anya Kholodenko** - [GitHub](https://github.com/a-xo)
+* **Leah Calafell** - [GitHub](https://github.com/leahcalafell97)
 * **sergio corcuera** - [GitHub](https://github.com/blaucomfuig)
-* **Joan Recordà Pellicer** - [GitHub](#https://github.com/JoanRecorda)
-* **Diego Gonzalez Valenzuela** - [GitHub](#https://github.com/)
+* **Joan Recordà Pellicer** - [GitHub](https://github.com/JoanRecorda)
+* **Diego Gonzalez Valenzuela** - [GitHub](https://github.com/)
 
 
 ## Project setup
