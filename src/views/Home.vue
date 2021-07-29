@@ -47,6 +47,32 @@ export default {
   color: #ffff;
   font-size: 50px;
   text-decoration: none;
-  background-color: #4abdac;
+}
+
+@media (min-width: 1024px){
+  .home{
+    display: flex;
+    align-items: center;
+    margin-left: 130px;
+    margin-bottom: 20px;
+  }
+  .title{
+    position: relative;
+    margin-left: 130px;
+    font-size :100px;
+  }
+  .logoApp{
+  width: 25rem;
+  height: 25rem;
+  margin-left: 20px;
+  margin-top: 60px;
+  }
+  .tap{
+    position: relative;
+    margin-top: 50px;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+  }
 }
 </style>

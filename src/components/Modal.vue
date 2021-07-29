@@ -112,5 +112,4 @@ export default {
     margin-right: 20px;
 }
 
-@media (min-width: 1440px)
 </style>
