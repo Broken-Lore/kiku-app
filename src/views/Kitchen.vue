@@ -41,9 +41,11 @@
       Back
     </button>
 
-    <button v-if="gameOn === true" @click="playMode" class="btn-back">
+    <router-link to="/selection">
+    <button v-if="gameOn === false" @click="playMode" class="btn-back">
       Back
     </button>
+    </router-link>
   </div>
 </template>
 

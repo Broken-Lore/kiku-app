@@ -1,5 +1,10 @@
 <template>
-  <div class="">
+  <div class="box">
+    <div class="button-content">
+      <button @click="openModal()" class="modal-button">how to play</button>
+    </div>
+    <Modal ref="modal"> </Modal>
+
     <div class="container">
       <router-link to="/kitchen" class="tap">
         <div class="scenes kitchen">
@@ -7,36 +12,55 @@
         </div>
       </router-link>
 
-      <router-link to="/clip-path" class="tap">
+      <router-link to="" class="tap">
         <div class="scenes house">
           <h2 class="sceneName">In my House</h2>
         </div>
-        </router-link>
+      </router-link>
 
-      <div class="scenes park">
-        <h2 class="sceneName">Playing in the Park</h2>
-      </div>
+      <router-link to="" class="tap">
+        <div class="scenes park">
+          <h2 class="sceneName">Playing in the Park</h2>
+        </div>
+      </router-link>
 
-      <div class="scenes city">
-        <h2 class="sceneName">Walking on the city</h2>
-      </div>
+      <router-link to="" class="tap">
+        <div class="scenes city">
+          <h2 class="sceneName">Transport</h2>
+        </div>
+      </router-link>
 
-      <div class="scenes travelling">
-        <h2 class="sceneName">Travelling</h2>
-      </div>
+      <router-link to="" class="tap">
+        <div class="scenes farm">
+          <h2 class="sceneName">farm</h2>
+        </div>
+      </router-link>
 
-      <div class="scenes mas">
-        <h2 class="sceneName">...</h2>
-      </div>
+      <router-link to="" class="tap">
+        <div class="scenes mas">
+          <h2 class="sceneName">...</h2>
+        </div>
+      </router-link>
       <p class="selectTxt">Select your favorite scene</p>
     </div>
   </div>
 </template>
 
 <script>
+import Modal from "../components/Modal.vue";
+
 export default {
   name: "Home",
-  components: {},
+
+  components: {
+    Modal,
+  },
+  methods: {
+    openModal() {
+      const modal = document.getElementById("modal");
+      modal.classList.add("show");
+    },
+  },
 };
 </script>
 <style scoped>
@@ -71,27 +95,27 @@ export default {
 }
 
 .house {
-  background-image: url(../assets/img/streetTransport.png);
+  background-image: url(../assets/img/salon.png);
 }
 
 .park {
-  background-image: url(../assets/img/kitchen.png);
+  background-image: url(../assets/img/parque.png);
 }
 .city {
   background-image: url(../assets/img/streetTransport.png);
 }
-.travelling {
-  background-image: url(../assets/img/kitchen.png);
+.farm {
+  background-image: url(../assets/img/granja.png);
 }
 .mas {
-  background-image: url(../assets/img/kitchen.png);
+  background-color: rgb(146, 143, 143);
 }
 
 .sceneName {
   font-size: 3rem;
-  text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff,
-    0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff,
-    1px -1px 0 #fff, -1px 1px 0 #fff;
+  text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff,
+    1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+  cursor: pointer;
 }
 
 .selectTxt {
@@ -100,8 +124,27 @@ export default {
   position: absolute;
   justify-content: center;
   font-weight: 600;
-  text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff,
-    0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff,
-    1px -1px 0 #fff, -1px 1px 0 #fff;
+  text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff,
+    1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+}
+.button-content {
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+.modal-button {
+  text-decoration: none;
+  border: none;
+  font-size: 20px;
+  color: #fff;
+  background: #30796f;
+  padding: 3px;
+  width: 140px;
+  margin-top: 15px;
+  margin-right: 100px;
+  border-radius: 10px;
+}
+.tap {
+  text-decoration: none;
 }
 </style>
