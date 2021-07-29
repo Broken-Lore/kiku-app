@@ -1,11 +1,15 @@
 <template>
   <div class="box">
-    <!-- <button
-      @click="showModal === true"
-      class="modal">how to play</button> -->
-      <Modal>
-        <p>intruction</p>
+    <div class="button-content">
+      <button
+        @click="openModal()"
+        class="modal-button">
+        how to play
+      </button>
+    </div>    
+      <Modal ref="modal">
       </Modal>
+    
     <div class="container">
       
       <router-link to="/kitchen" class="tap">
@@ -44,21 +48,16 @@ import Modal from "../components/Modal.vue";
 
 export default {
   name: "Home",
+  
   components: {
     Modal
   },
- /*  data() {
-    return {
-      modal: false,
-    };
-  },
- */
-  /* methods: {
-    openModal() {
-      this.modal = !this.modal;
-      console.log(this.modal);
+  methods:{
+    openModal(){
+      this.$refs.modal.show();
     }
-  }, */
+  }
+
 };
 </script>
 <style scoped>
@@ -126,9 +125,23 @@ export default {
     0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff,
     1px -1px 0 #fff, -1px 1px 0 #fff;
 }
-button{
+.button-content{
   display: flex;
   justify-content: flex-end;
+}
+.modal-button{
+  text-decoration: none;
+  border: none;
+  font-size: 20px;
+  color: #fff;
+  background: #30796f;
+  padding: 3px;
+  width: 140px;
+  margin-top: 15px;
+  margin-right: 100px;
+  border-radius: 10px;
+  
+  
 }
 
 </style>

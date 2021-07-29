@@ -1,29 +1,25 @@
 <template>
-    <div class="modal">
-        <div class="modal-mask">
-            <div class="modal-wrapper">
-                <div class="modal-container">
+    <div class="modal" id="modal">
+        <div class="modal-container">
 
-                    <div class="modal-header">
-                        <slot name="header">
-                            How to play:
-                        </slot>
-                    </div>
+            <div class="modal-header">
+                <slot name="header">
+                    How to play:
+                </slot>
+            </div>
 
-                    <div class="modal-body">
-                        <slot name="body">
-                            Tap the element to hear his sound
-                        </slot>
-                    </div>
+            <div class="modal-body">
+                <slot name="body">
+                    Tap the element to hear his sound
+                </slot>
+            </div>
 
-                    <div class="modal-footer">
-                        <slot name="footer">
-                            <button class="modal-close-button" @click="$emit('close')">
-                                OK
-                            </button>
-                        </slot>
-                    </div>
-                </div>
+            <div class="modal-footer">
+                <slot name="footer">
+                    <button class="modal-close-button" @click="hide()">
+                        OK
+                    </button>
+                </slot>
             </div>
         </div>
     </div>
@@ -33,23 +29,16 @@
 
 export default {
     name: 'Modal',
-
-    data() {
-        return {
-            modal: false
-        }
-    },
-
-    /* methods: {
-    openModal() {
-      this.modal = !this.modal;
-      console.log(this.showModal);
-    },
-    closeModal() {
-      this.modal = !this.modal;
-      console.log(this.modal);
-    },
-    } */
+    methods: {
+        show(){
+            const modal = document.getElementById('modal')
+            modal.classList.add("show");
+        },
+        hide() {
+            const modal = document.getElementById("modal");
+            modal.classList.remove("show")
+        },
+    }
 }
     
 </script>
@@ -74,7 +63,16 @@ export default {
     background: rgba(0, 0, 0, 0.4);
     visibility: hidden;
     opacity: 0;
-    transition: opacity 0.4s easy-in-out, tranform 0.4s easy-in-out;
+    transition: opacity 0.4s easy-in-out, visibility 0.4s easy-in-out;
+}
+.modal.show{
+    visibility: visible;
+    opacity: 1;
+}
+.modal.show .modal-container{
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
 }
 
 .modal-container{
@@ -85,6 +83,10 @@ export default {
     color: black;
     font-size: 30px;
     font-weight: bold;
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out, transform 0.4s ease-in-out;
 }
 .modal-close-button{
     border: none;
@@ -99,7 +101,7 @@ export default {
 .modal-footer{
     display: flex;
     justify-content: flex-end;
-    align-items: flex-end;
+    align-content: flex-end;
     margin-right: 10px;
     
 }
