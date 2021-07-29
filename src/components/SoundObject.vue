@@ -1,5 +1,5 @@
 <template>
-  <figure :class="objectName">
+  <div class="floater" :class="objectName">
     <img
       @click="
         playSound();
@@ -9,9 +9,10 @@
       :class="imgClass"
       :src="images[objectName]"
     />
-    <figcaption class="name">A {{ objectName }}</figcaption>
-  </figure>
+    <!-- <figcaption class="name">A {{ objectName }}</figcaption> -->
+  </div>
 </template>
+
 
 <script>
 import catSfx from "@/assets/sound/cat.wav";
@@ -20,6 +21,7 @@ import dogSfx from "@/assets/sound/dog.mp3";
 import kettleSfx from "@/assets/sound/kettle.mp3";
 import mixerSfx from "@/assets/sound/mixer.mp3";
 import panSfx from "@/assets/sound/pan.mp3";
+import fridgeSfx from "@/assets/sound/fridge.mp3";
 
 import catImg from "@/assets/img/cat.png";
 import clockImg from "@/assets/img/clock.png";
@@ -27,6 +29,7 @@ import dogImg from "@/assets/img/dog.png";
 import kettleImg from "@/assets/img/kettle.png";
 import mixerImg from "@/assets/img/mixer.png";
 import panImg from "@/assets/img/pan.png";
+import fridgeImg from "@/assets/img/fridge.png";
 
 export default {
   name: "SoundObject",
@@ -38,6 +41,7 @@ export default {
         cat: catSfx,
         clock: clockSfx,
         dog: dogSfx,
+        fridge: fridgeSfx,
         kettle: kettleSfx,
         mixer: mixerSfx,
         pan: panSfx,
@@ -46,6 +50,7 @@ export default {
         cat: catImg,
         clock: clockImg,
         dog: dogImg,
+        fridge: fridgeImg,
         kettle: kettleImg,
         mixer: mixerImg,
         pan: panImg,
@@ -58,7 +63,7 @@ export default {
   computed: {
     imgClass: function () {
       return "img-" + this.objectName;
-    }
+    },
   },
   methods: {
     playSound() {
@@ -66,12 +71,12 @@ export default {
       this.sound.paused ? this.sound.play() : this.sound.pause();
     },
     stopSound() {
-        this.sound.pause();
+      this.sound.pause();
     },
     scoreMount() {
       this.$emit("scoreMounter", this.listened);
       if (!this.sound) return;
-      return this.listened += 1;
+      return (this.listened += 1);
     },
   },
   mounted: function () {
@@ -86,64 +91,52 @@ export default {
   font-size: 2rem;
   font-weight: 700;
 }
-.cat {
+.floater {
   position: absolute;
-  bottom: -1vh;
-  left: 19vw;
-  min-width: 15vw;
-  min-height: 15vw;
+  z-index: 1;
+  cursor: pointer;
+  transition: all 0.5s ease;
 }
-.img-cat {
-  width: 12vw;
-  height: 12vw;
+.floater img {
+  width: 100%;
+}
+.floater:hover {
+  transform: scale(1.2);
+  transition: all 0.5s ease;
+}
+.cat {
+  left: 30%;
+  top: 76%;
+  width: 10%;
 }
 .clock {
-  position: absolute;
-  bottom: 55vh;
-  left: 25vw;
-}
-.img-clock {
-  width: 9.8vw;
-  height: auto;
+  left: 34%;
+  top: 27%;
+  width: 7%;
 }
 .dog {
-  position: absolute;
-  bottom: 11vh;
-  left: 31vw;
-  width: 9vw;
+  left: 40%;
+  top: 62%;
+  width: 14%;
 }
-.img-dog {
-  width: 16vw;
-  height: 16vw;
+.fridge {
+  left: 8%;
+  top: 34%;
+  width: 30%;
 }
 .pan {
-  position: absolute;
-  bottom: 32.5vh;
-  right: 1vh;
-  min-width: 15vw;
-  min-height: 15vw;
-}
-.img-pan {
-  width: 7.8vw;
-  height: auto;
+  left: 79%;
+  top: 45%;
+  width: 7%;
 }
 .kettle {
-  position: absolute;
-  left: 38vw;
-  top: 33vw;
-}
-.img-kettle {
-  width: 9vw;
-  height: auto;
+  left: 43%;
+  top: 47%;
+  width: 7%;
 }
 .mixer {
-  position: absolute;
-  bottom: 38.5vh;
-  left: 25.2vw;
-  width: 9vw;
-}
-.img-mixer {
-  width: 13vw;
-  height: 13vw;
+  left: 33%;
+  top: 43%;
+  width: 10%;
 }
 </style>
