@@ -5,6 +5,7 @@
         playSound();
         scoreMount();
       "
+      @mouseleave="stopSound"
       :class="imgClass"
       :src="images[objectName]"
     />
@@ -32,7 +33,7 @@ export default {
   data: function () {
     return {
       sound: null,
-      clicked: 0,
+      listened: 0,
       sounds: {
         cat: catSfx,
         clock: clockSfx,
@@ -57,19 +58,20 @@ export default {
   computed: {
     imgClass: function () {
       return "img-" + this.objectName;
-    },
-    imgName: function () {
-      return "";
-    },
+    }
   },
   methods: {
     playSound() {
       if (!this.sound) return;
       this.sound.paused ? this.sound.play() : this.sound.pause();
     },
+    stopSound() {
+        this.sound.pause();
+    },
     scoreMount() {
-      this.$emit("scoreMounter", this.clicked);
-      this.clicked += 1;
+      this.$emit("scoreMounter", this.listened);
+      if (!this.sound) return;
+      return this.listened += 1;
     },
   },
   mounted: function () {
@@ -79,11 +81,11 @@ export default {
 </script>
 
 <style scoped>
-    .name {
-      font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-      font-size: 2rem;
-      font-weight: 700;
-    }
+.name {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 2rem;
+  font-weight: 700;
+}
 .cat {
   position: absolute;
   bottom: -1vh;
@@ -100,7 +102,6 @@ export default {
   bottom: 55vh;
   left: 25vw;
 }
-
 .img-clock {
   width: 9.8vw;
   height: auto;

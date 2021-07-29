@@ -1,19 +1,19 @@
 <template>
   <div class="big-container">
     <img
-      class="img-kitchen"
       v-if="gameOn === false"
+      class="img-kitchen"
       src="../assets/img/kitchen.png"
-      alt=""
+      alt="illustration of a kitchen with its appliances, a cat, a dog and a cook"
     />
     <img
-      class="img-kitchen"
       v-if="gameOn === true"
+      class="img-kitchen"
       src="../assets/img/kitchen-dim.png"
-      alt=""
+      alt="illustration of a kitchen with its appliances, a cat, a dog and a cook"
     />
     <div v-if="gameOn === true">
-      <SoundObject objectName="cat" @scoreMounter="scoreMount" />
+      <SoundObject objectName="cat" @scoreMounter="scoreMount" ref="cat"/>
       <SoundObject objectName="clock" @scoreMounter="scoreMount" />
       <SoundObject objectName="dog" @scoreMounter="scoreMount" />
       <SoundObject objectName="kettle" @scoreMounter="scoreMount" />
@@ -21,12 +21,11 @@
       <SoundObject objectName="pan" @scoreMounter="scoreMount" />
     </div>
 
-    <p v-if="gameOn === true" class="score">score : {{ scoreCounter }}</p>
+    <p v-if="gameOn === true" class="score"> score : {{ scoreCounter }} </p>
 
     <button
       v-if="gameOn === false"
       @click="playMode"
-      @mouseleave="stop"
       class="btn-play"
     >
       Play
