@@ -19,14 +19,14 @@ import clockSfx from "@/assets/sound/clock.mp3";
 import dogSfx from "@/assets/sound/dog.mp3";
 import kettleSfx from "@/assets/sound/kettle.mp3";
 import mixerSfx from "@/assets/sound/mixer.mp3";
-import panSfx from "@/assets/sound/pan.mp3";
+import panSfx from "@/assets/sound/Pan.mp3";
 
 import catImg from "@/assets/img/cat.png";
 import clockImg from "@/assets/img/clock.png";
 import dogImg from "@/assets/img/dog.png";
 import kettleImg from "@/assets/img/kettle.png";
 import mixerImg from "@/assets/img/mixer.png";
-import panImg from "@/assets/img/pan.png";
+import panImg from "@/assets/img/Pan.png";
 
 export default {
   name: "SoundObject",
