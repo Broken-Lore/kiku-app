@@ -36,7 +36,7 @@
     </button>
 
     <router-link to="/selection">
-    <button v-if="gameOn === false" @click="playMode" class="btn-back">
+    <button v-if="gameOn === false" class="btn-back">
       Back
     </button>
     </router-link>
