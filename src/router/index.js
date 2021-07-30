@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-import Kitchen from '../components/Kitchen.vue'
 import Selection from '../views/Selection.vue'
+import ClipPath from '../views/ClipPath.vue'
+import Kitchen from '../views/Kitchen.vue'
 
 const routes = [
   {
@@ -18,6 +19,11 @@ const routes = [
     path: '/Selection',
     name: 'Selection',
     component: Selection
+  },
+  {
+    path: '/clip-path',
+    name: 'ClipPath',
+    component: ClipPath
   },
 ]
 
