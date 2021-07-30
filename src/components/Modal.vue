@@ -11,6 +11,12 @@
             <div class="modal-body">
                 <slot name="body">
                     watch the video to see how play
+                  <div>
+                    <video width="700" height="450" controls>
+                      <source src="../assets/video/howplay.mp4" type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
                 </slot>
             </div>
 
@@ -78,8 +84,8 @@ export default {
 .modal-container{
     background: #ffff;
     min-width: 370px;
-    width: 500px;
-    height: 200px;
+    width: 800px;
+    height: 550px;
     color: black;
     font-size: 20px;
     font-weight: bold;
@@ -106,10 +112,10 @@ export default {
 }
 
 .modal-footer{
-    display: flex;
-    justify-content: flex-end;
-    align-content: flex-end;
-    margin-right: 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-content: flex-end;
+  margin-right: 20px;
 }
 
 </style>
