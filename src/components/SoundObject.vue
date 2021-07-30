@@ -6,6 +6,7 @@
         scoreMount();
       "
       @mouseleave="stopSound"
+      :disabled="true"
       :class="imgClass"
       :src="images[objectName]"
     />
@@ -66,7 +67,6 @@ export default {
   },
   methods: {
     playSound() {
-
       if (!this.sound) return;
       this.sound.paused ? this.sound.play() : this.sound.pause();
     },
@@ -105,7 +105,7 @@ export default {
   transition: all 0.5s ease;
 }
 .cat {
-  left: 30%;
+  left: 40%;
   top: 76%;
   width: 10%;
 }
@@ -115,14 +115,14 @@ export default {
   width: 7%;
 }
 .dog {
-  left: 40%;
+  left: 52%;
   top: 62%;
   width: 14%;
 }
 .fridge {
-  left: 8%;
+  left: 13%;
   top: 34%;
-  width: 30%;
+  width: 18%;
 }
 .pan {
   left: 79%;

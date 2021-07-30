@@ -51,7 +51,6 @@ import Modal from "../components/Modal.vue";
 
 export default {
   name: "Home",
-
   components: {
     Modal,
   },
@@ -93,11 +92,9 @@ export default {
 .kitchen {
   background-image: url(../assets/img/kitchen.png);
 }
-
 .house {
   background-image: url(../assets/img/salon.png);
 }
-
 .park {
   background-image: url(../assets/img/parque.png);
 }

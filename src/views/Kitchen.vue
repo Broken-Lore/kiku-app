@@ -79,16 +79,6 @@ export default {
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap");
-/* .big-container {
-  font-family: "Amatic SC", cursive;
-  position: relative;
-  max-width: 100vw;
-}
-.img-kitchen {
-  position: relative;
-  width: 100vw;
- object-fit: cover;
-} */
 body {
   margin: 0px;
 }
@@ -102,8 +92,8 @@ body {
   z-index: 0;
 }
 .filter {
-  filter: grayscale(var(--value, 100%));
-  --value: 100%;
+  filter: blur(3.4px) sepia(0.38) grayscale(0.22) brightness(0.6);
+  
 }
 .btn-play {
   font-family: "Amatic SC", cursive;
