@@ -28,6 +28,7 @@ export default {
 
     scoreMount(){
        this.$emit('scoreMounter')
+       
     }
     
   }

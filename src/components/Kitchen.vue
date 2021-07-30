@@ -14,7 +14,7 @@
     />
 
     <Clock @scoreMounter="scoreMount"  v-if="state === true" />
-    <Cat @scoreMounter="scoreMount"  v-if="state === true" />
+    <Cat @scoreMounter="scoreMount"  v-if="state === true && loopCounter !== 0" />
     <HotPan @scoreMounter="scoreMount"   v-if="state === true" />
     <Dog @scoreMounter="scoreMount"   v-if="state === true" />
     <Mixer @scoreMounter="scoreMount"   v-if="state === true" />
@@ -63,7 +63,9 @@ export default {
   data() {
     return {
       state: false,
-      scoreCounter: 0
+      scoreCounter: 0,
+      score: 10,
+      loopCounterCat: 3
     };
   },
   methods: {
@@ -72,7 +74,31 @@ export default {
       console.log(this.state);
     },
     scoreMount(){
-      this.scoreCounter += 100
+      if(this.loopCounter == 0){
+            this.loopCounter = 3
+            this.score = 10
+          }
+  
+      switch(this.score){
+        case(10):
+          this.scoreCounter += 10
+          this.score -= 5;
+          this.loopCounter --
+          break;
+        case(5):
+          this.scoreCounter += 5
+          this.score -= 3
+          this.loopCounter --
+          break;
+        case(2):
+          this.scoreCounter += 2
+          this.score -= 2
+          this.loopCounter --
+          break;
+      }
+
+      
+
     }
   },
 };
