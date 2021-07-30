@@ -120,7 +120,7 @@ export default {
   display: flex;
   justify-content: flex-end;
   align-content: flex-end;
-  margin-right: 20px;
+  margin-right: 50px;
 }
 
 </style>
