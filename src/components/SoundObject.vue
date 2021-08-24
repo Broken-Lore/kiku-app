@@ -1,5 +1,6 @@
 <template>
-  <div class="floater" :class="objectName">
+  <div class="floater" :class="objectName" v-for="SoundObject in SoundObjects" :key="SoundObject">
+    
     <img
       @click="
         playSound();
@@ -15,21 +16,7 @@
 </template>
 
 <script>
-import catSfx from "@/assets/sound/cat.wav";
-import clockSfx from "@/assets/sound/clock.mp3";
-import dogSfx from "@/assets/sound/dog.mp3";
-import kettleSfx from "@/assets/sound/kettle.mp3";
-import mixerSfx from "@/assets/sound/mixer.mp3";
-import panSfx from "@/assets/sound/pan.mp3";
-import fridgeSfx from "@/assets/sound/fridge.mp3";
-
-import catImg from "@/assets/img/cat.png";
-import clockImg from "@/assets/img/clock.png";
-import dogImg from "@/assets/img/dog.png";
-import kettleImg from "@/assets/img/kettle.png";
-import mixerImg from "@/assets/img/mixer.png";
-import panImg from "@/assets/img/pan.png";
-import fridgeImg from "@/assets/img/fridge.png";
+import {apiService} from "@/services/apiService";
 
 export default {
   name: "SoundObject",

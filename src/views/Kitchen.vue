@@ -22,15 +22,7 @@
       <SoundObject objectName="mixer" />
       <SoundObject objectName="pan" />
     </div>
-    <div v-if="gameOn === true">
-      <SoundObject objectName="cat" @scoreMounter="scoreMount" />
-      <SoundObject objectName="clock" @scoreMounter="scoreMount" />
-      <SoundObject objectName="dog" @scoreMounter="scoreMount" />
-      <SoundObject objectName="fridge" @scoreMounter="scoreMount" />
-      <SoundObject objectName="kettle" @scoreMounter="scoreMount" />
-      <SoundObject objectName="mixer" @scoreMounter="scoreMount" />
-      <SoundObject objectName="pan" @scoreMounter="scoreMount" />
-    </div>
+
 
     <p v-if="gameOn === true" class="score">score : {{ scoreCounter }}</p>
 
@@ -54,6 +46,7 @@
 
 <script>
 import SoundObject from "../components/SoundObject.vue";
+
 
 export default {
   name: "Kitchen",
