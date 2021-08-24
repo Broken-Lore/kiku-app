@@ -54,6 +54,7 @@
 
 <script>
 import SoundObject from "../components/SoundObject.vue";
+import {sceneService} from "../services/sceneService.js"
 
 export default {
   name: "Kitchen",
@@ -65,7 +66,12 @@ export default {
       gameOn: false,
       scoreCounter: 0,
       scores: [10, 5, 3, 1],
+      soundObjects: [],
+      sceneId: 1,
     };
+  },
+  mounted() {
+    this.getSounds()
   },
   methods: {
     playMode() {
@@ -76,6 +82,11 @@ export default {
       console.log(clickCount);
       this.scoreCounter += this.scores[clickCount] || 0;
     },
+    async getSounds() {
+      let response = await sceneService.getSoundsbyScene(this.sceneId) 
+      this.soundObjects = response.data
+      console.log(this.soundObjects);
+    }
   },
 };
 </script>
