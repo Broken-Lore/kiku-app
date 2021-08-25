@@ -9,8 +9,9 @@
       :disabled="true"
       :class="imgClass"
       :src="images[objectName]"
+      v-bind:key="soundObject.image"
     />
-    <p class="name">A {{ objectName }}</p>
+    <p class="name">A {{ soundObject.name }}</p>
   </div>
 </template>
 
@@ -57,9 +58,10 @@ export default {
       },
     };
   },
-  props: {
-    objectName: String,
-  },
+  props: [
+    "objectName",
+    "soundObject",
+  ],
   computed: {
     imgClass: function () {
       return "img-" + this.objectName;
@@ -80,7 +82,7 @@ export default {
     },
   },
   mounted: function () {
-    this.sound = new Audio(this.sounds[this.objectName]);
+    this.sound = new Audio(this.soundObject.audio);
   },
 };
 </script>
