@@ -14,22 +14,14 @@
       alt="illustration of a kitchen with its appliances, a cat, a dog and a cook"
     />
     <div v-if="gameOn === false">
-      <SoundObject objectName="cat" />
-      <SoundObject objectName="clock" />
-      <SoundObject objectName="dog" />
-      <SoundObject objectName="fridge" />
-      <SoundObject objectName="kettle"/>
-      <SoundObject objectName="mixer" />
-      <SoundObject objectName="pan" />
+      <div v-for="soundObject in soundObjects" v-bind:key="soundObject">
+      <SoundObject :objectName="soundObject.name" v-bind:key="soundObject.name" :soundObject="soundObject"/>
+      </div>
     </div>
     <div v-if="gameOn === true">
-      <SoundObject objectName="cat" @scoreMounter="scoreMount" />
-      <SoundObject objectName="clock" @scoreMounter="scoreMount" />
-      <SoundObject objectName="dog" @scoreMounter="scoreMount" />
-      <SoundObject objectName="fridge" @scoreMounter="scoreMount" />
-      <SoundObject objectName="kettle" @scoreMounter="scoreMount" />
-      <SoundObject objectName="mixer" @scoreMounter="scoreMount" />
-      <SoundObject objectName="pan" @scoreMounter="scoreMount" />
+      <div v-for="soundObject in soundObjects" v-bind:key="soundObject">
+      <SoundObject :objectName="soundObject.name"  v-bind:key="soundObject.name" :soundObject="soundObject" @scoreMounter="scoreMount" />
+      </div>
     </div>
 
     <p v-if="gameOn === true" class="score">score : {{ scoreCounter }}</p>
@@ -86,6 +78,8 @@ export default {
       let response = await sceneService.getSoundsbyScene(this.sceneId) 
       this.soundObjects = response.data
       console.log(this.soundObjects);
+      let soundName = this.soundObjects[1];
+      console.log(soundName.name);
     }
   },
 };
