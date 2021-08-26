@@ -118,10 +118,12 @@
         let response = await gameService.compareSounds(data);
 
         this.assertion = response.data.assertion;
-
-        if (this.assertion === true) {
+         if (this.assertion) {
+          window.alert("YAY! YOU GOT IT!");
           setTimeout(this.getRandomSound(), 300000);
-        }
+         } else {
+          window.alert("OOPS! TRY AGAIN... ;)");
+         }
       },
       scoreMount(clickCount) {
         if (!this.assertion) return;
