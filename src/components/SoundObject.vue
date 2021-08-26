@@ -66,6 +66,7 @@ export default {
     imgClass: function () {
       return "img-" + this.objectName;
     },
+    
   },
   methods: {
     playSound() {
