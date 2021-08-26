@@ -8,6 +8,10 @@
 export default {
   name: "DashBoardSounds",
   methods: {
+    openSounds() {
+      const dashBoardSounds = document.getElementById("dashBoardSounds");
+      dashBoardSounds.classList.add("show");
+    },
     hide() {
       const dashBoardSounds = document.getElementById("dashboardSounds");
       dashBoardSounds.classList.remove("show");
@@ -18,9 +22,12 @@ export default {
    
 <style scoped>
 .dashBoardSounds {
+  position: fixed;
+  background-color: red;
+  inset: 0;
   visibility: hidden;
 }
-.dashBoardSounds .show {
+.show {
   visibility: visible;
   opacity: 1;
   background-color: blue;
