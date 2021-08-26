@@ -28,6 +28,7 @@
             :objectName="soundObject.name"
             v-bind:key="soundObject.name"
             :soundObject="soundObject"
+            :gameOn="gameOn"
             @scoreMounter="scoreMount"
             @click="compareSounds(soundObject.id)"
           />
@@ -109,21 +110,21 @@
           : this.randomSound.pause();
       },
       async compareSounds(clickedSoundId) {
-         
         var data = {
           randomSoundId: this.randomObject.id,
           clickedSoundId: clickedSoundId,
         };
-        
+
         let response = await gameService.compareSounds(data);
 
         this.assertion = response.data.assertion;
-        console.log(this.assertion)
 
-       
+        if (this.assertion === true) {
+          setTimeout(this.getRandomSound(), 300000);
+        }
       },
       scoreMount(clickCount) {
-        if(!this.assertion) return;
+        if (!this.assertion) return;
         console.log(clickCount);
         this.scoreCounter += this.scores[clickCount] || 0;
       },

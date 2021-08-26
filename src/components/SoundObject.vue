@@ -60,6 +60,7 @@ export default {
   props: [
     "objectName",
     "soundObject",
+    "gameOn"
   ],
   computed: {
     imgClass: function () {
@@ -69,6 +70,7 @@ export default {
   methods: {
     playSound() {
       if (!this.sound) return;
+      if(this.gameOn === true) return;
       this.sound.paused ? this.sound.play() : this.sound.pause();
     },
     stopSound() {
