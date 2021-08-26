@@ -9,9 +9,8 @@
       :disabled="true"
       :class="imgClass"
       :src="images[objectName]"
-      v-bind:key="soundObject.image"
     />
-    <p class="name">A {{ soundObject.name }}</p>
+    <p class="name">{{ soundObject.name }}</p>
   </div>
 </template>
 
