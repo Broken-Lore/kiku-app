@@ -81,7 +81,7 @@ export default {
     },
   },
   mounted: function () {
-    this.sound = new Audio(this.soundObject.audio);
+    this.sound = new Audio(this.sounds[this.objectName]);
   },
 };
 </script>

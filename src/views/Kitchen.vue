@@ -35,7 +35,7 @@
     </button>
 
     <router-link to="/selection">
-    <button v-if="gameOn === false" class="btn-back">
+    <button v-if="gameOn === false"  @click="stopGame" class="btn-back">
       Back
     </button>
     </router-link>
@@ -45,8 +45,9 @@
 </template>
 
 <script>
-import SoundObject from "../components/SoundObject.vue";
+import SoundObject from "../components/SoundObject.vue"
 import {sceneService} from "../services/sceneService.js"
+import {gameService} from "../services/gamesService"
 
 export default {
   name: "Kitchen",
@@ -60,16 +61,40 @@ export default {
       scores: [10, 5, 3, 1],
       soundObjects: [],
       sceneId: 1,
+      randomObject: [],
+      randomSound: null
+      
     };
   },
   mounted() {
     this.getSounds()
   },
   methods: {
+      playSound() {
+      if (!this.randomSound) return;
+      this.randomSound.paused ? this.randomSound.play() : this.randomSound.pause();
+     
+    },
     playMode() {
       this.gameOn = !this.gameOn;
+      this.getRandomSound()
       return this.gameOn;
     },
+      async getRandomSound() {
+         if(this.gameOn){
+      let response  = await gameService.randomSound(this.sceneId)
+        this.randomObject = response.data
+      
+        this.randomSound = new Audio(this.randomObject.audio)
+        console.log(this.randomSound)
+        
+        this.playSound()
+         }
+    },
+      stopGame(){
+        this.randomSound = null
+      },
+
     scoreMount(clickCount) {
       console.log(clickCount);
       this.scoreCounter += this.scores[clickCount] || 0;

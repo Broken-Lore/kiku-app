@@ -7,7 +7,7 @@ export const sceneService = {
 
     getSoundsbyScene(id) {
         return axios.get(baseUrl + id + "/sounds")
-    }
+    },
 }
 
 
