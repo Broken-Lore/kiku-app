@@ -1,12 +1,12 @@
 import { mount } from '@vue/test-utils'
-import Cat from '@/components/Cat.vue'
+import SoundObject from '@/components/SoundObject.vue'
 
 // Let’s write our first test.
 
 
-describe('Cat.vue', () => {
+describe('SoundObject.vue', () => {
     // Inspect the raw component options
     it('has data', () => {
-        expect(typeof Cat.data).toBe('function')
+        expect(typeof SoundObject.data).toBe('function')
     })
 })

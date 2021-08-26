@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Selection from '../views/Selection.vue'
-import ClipPath from '../views/ClipPath.vue'
 import Kitchen from '../views/Kitchen.vue'
+import DashBoard from '../views/DashBoard.vue'
 
 const routes = [
   {
@@ -21,9 +21,9 @@ const routes = [
     component: Selection
   },
   {
-    path: '/clip-path',
-    name: 'ClipPath',
-    component: ClipPath
+    path: '/dashboard',
+    name: 'DashBoard',
+    component: DashBoard
   },
 ]
 
