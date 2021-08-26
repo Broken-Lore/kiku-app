@@ -6,6 +6,11 @@ export const gameService = {
 
     randomSound(id){
         return axios.get(baseUrl + "/gameSound/" + id )
+    },
+
+
+    compareSounds(data){
+        return axios.post(baseUrl + "/compare", data)
     }
 }
 
