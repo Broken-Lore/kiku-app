@@ -1,4 +1,4 @@
-T<template>
+<template>
   <div>
     <div class="message">
       {{ message }}

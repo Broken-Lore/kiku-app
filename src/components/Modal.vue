@@ -36,10 +36,6 @@
 export default {
     name: 'Modal',
     methods: {
-        show(){
-            const modal = document.getElementById('modal')
-            modal.classList.add("show");
-        },
         hide() {
             const modal = document.getElementById("modal");
             modal.classList.remove("show")
