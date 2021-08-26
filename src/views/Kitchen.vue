@@ -7,6 +7,7 @@
       src="../assets/img/kitchen-back.png"
       alt="illustration of a kitchen with its appliances, a cat, a dog and a cook"
     />
+  
     <img
       v-if="gameOn === true"
       class="base filter"

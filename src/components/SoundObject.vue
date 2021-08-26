@@ -11,6 +11,9 @@
       :src="images[objectName]"
       v-bind:key="soundObject.image"
     />
+    <img
+    src="http://127.0.0.1:8000/scenes"/>
+    
     <p class="name">A {{ soundObject.name }}</p>
   </div>
 </template>
