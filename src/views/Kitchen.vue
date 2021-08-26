@@ -118,6 +118,11 @@
         let response = await gameService.compareSounds(data);
 
         this.assertion = response.data.assertion;
+         if (this.assertion) {
+          window.alert("YAY! YOU GOT IT!");
+         } else {
+          window.alert("OOPS! TRY AGAIN... ;)");
+         }
         console.log(this.assertion)
 
        
