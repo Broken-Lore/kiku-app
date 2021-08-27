@@ -119,10 +119,10 @@
 
         this.assertion = response.data.assertion;
          if (this.assertion) {
-          window.alert("YAY! YOU GOT IT!");
+          window.alert("YAAAY! YOU GOT IT!");
           setTimeout(this.getRandomSound(), 300000);
          } else {
-          window.alert("OOPS! TRY AGAIN... ;)");
+          window.alert("OOOPS! TRY IT AGAIN... ;)");
          }
       },
       scoreMount(clickCount) {
