@@ -1,5 +1,8 @@
 <template>
   <div class="big-container">
+    <div v-if="loading">
+      <BreedingRhombusSpinner />
+    </div>
     <div class="image-container">
       <img
         v-if="gameOn === false"
@@ -56,16 +59,28 @@
 
 <script>
 import SoundObject from "../components/SoundObject.vue";
+import BreedingRhombusSpinner from "../components/BreedingRhombusSpinner.vue";
 import { sceneService } from "../services/sceneService.js";
-import { gameService } from "../services/gamesService";
+import { gameService } from "../services/gameService";
 
 export default {
   name: "Kitchen",
   components: {
     SoundObject,
+    BreedingRhombusSpinner,
+  },
+  mounted() {
+    this.getSounds();
+    document.onreadystatechange = () => {
+      if (document.readyState == "complete") {
+        this.isLoaded = true;
+      }
+    };
   },
   data() {
     return {
+      isLoaded: false,
+      loading: false,
       gameOn: false,
       scoreCounter: 0,
       scores: [10, 5, 3, 1],
@@ -76,21 +91,26 @@ export default {
       assertion: null,
     };
   },
-  mounted() {
-    this.getSounds();
-  },
   methods: {
-    async getSounds() {
-      let response = await sceneService.getSoundsbyScene(this.sceneId);
-      this.soundObjects = response.data;
-      console.log(this.soundObjects);
-      let soundName = this.soundObjects[1];
-      console.log(soundName.name);
-    },
     playMode() {
       this.gameOn = !this.gameOn;
       this.getRandomSound();
       return this.gameOn;
+    },
+    playSound() {
+      if (!this.randomSound) return;
+      this.randomSound.paused
+        ? this.randomSound.play()
+        : this.randomSound.pause();
+    },
+    async getSounds() {
+      this.loading = true;
+      let response = await sceneService.getSoundsbyScene(this.sceneId);
+      this.soundObjects = response.data;
+      console.log(this.soundObjects);
+      let soundName = this.soundObjects[1];
+      this.loading = false;
+      console.log(soundName.name);
     },
     async getRandomSound() {
       if (this.gameOn) {
@@ -102,14 +122,8 @@ export default {
         this.playSound();
       }
     },
-    playSound() {
-      if (!this.randomSound) return;
-      this.randomSound.paused
-        ? this.randomSound.play()
-        : this.randomSound.pause();
-    },
     async compareSounds(clickedSoundId) {
-      var data = {
+      let data = {
         randomSoundId: this.randomObject.id,
         clickedSoundId: clickedSoundId,
       };

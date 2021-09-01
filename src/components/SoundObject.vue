@@ -32,7 +32,6 @@ import panImg from "@/assets/img/pan.png";
 import fridgeImg from "@/assets/img/fridge.png";
 
 export default {
-  name: "SoundObject",
   data: function () {
     return {
       sound: null,
