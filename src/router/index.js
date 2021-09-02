@@ -24,7 +24,7 @@ const routes = [
     path: '/clip-path',
     name: 'ClipPath',
     component: ClipPath
-  },
+  }
 ]
 
 const router = createRouter({
