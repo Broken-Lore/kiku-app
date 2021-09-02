@@ -134,7 +134,12 @@ export default {
 
         this.assertion = response.data.assertion;
         if (this.assertion) {
-          window.alert("YAAAY! YOU GOT IT!");
+          Swal.fire({
+          title: 'Error!',
+          text: 'Do you want to continue',
+           icon: 'error',
+           confirmButtonText: 'Cool'
+})
           setTimeout(this.getRandomSound(), 300000);
         } else {
           this.randomSound.pause();
