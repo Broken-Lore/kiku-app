@@ -8,7 +8,7 @@
     <div class="container">
       <router-link to="/kitchen" class="tap">
         <div class="scenes kitchen">
-          <h2 class="sceneName">kitchen</h2>
+          <h2 class="sceneName">Kitchen</h2>
         </div>
       </router-link>
 
@@ -76,7 +76,6 @@ export default {
   align-items: center;
   justify-items: center;
 }
-
 .scenes {
   background-size: cover;
   background-position: center;
@@ -88,7 +87,6 @@ export default {
   align-items: center;
   justify-content: center;
 }
-
 .kitchen {
   background-image: url(../assets/img/kitchen.png);
 }
@@ -107,14 +105,12 @@ export default {
 .mas {
   background-color: rgb(146, 143, 143);
 }
-
 .sceneName {
   font-size: 3rem;
   text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff,
     1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
   cursor: pointer;
 }
-
 .selectTxt {
   font-size: 5rem;
   display: flex;

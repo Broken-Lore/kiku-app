@@ -60,6 +60,7 @@
 <script>
 import SoundObject from "../components/SoundObject.vue";
 import BreedingRhombusSpinner from "../components/BreedingRhombusSpinner.vue";
+
 import { sceneService } from "../services/sceneService.js";
 import { gameService } from "../services/gameService";
 
@@ -67,7 +68,7 @@ export default {
   name: "Kitchen",
   components: {
     SoundObject,
-    BreedingRhombusSpinner,
+    BreedingRhombusSpinner
   },
   mounted() {
     this.getSounds();
@@ -79,7 +80,6 @@ export default {
   },
   data() {
     return {
-      isLoaded: false,
       loading: false,
       gameOn: false,
       scoreCounter: 0,
@@ -92,6 +92,9 @@ export default {
     };
   },
   methods: {
+    alertDisplay() {
+      this.$refs.form.alertDisplay()
+    },
     playMode() {
       this.gameOn = !this.gameOn;
       this.getRandomSound();
@@ -135,15 +138,25 @@ export default {
         this.assertion = response.data.assertion;
         if (this.assertion) {
           Swal.fire({
-          title: 'Error!',
-          text: 'Do you want to continue',
-           icon: 'error',
-           confirmButtonText: 'Cool'
-})
+            position: "top-end",
+            icon: "success",
+            title: "Hooray! Correct",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          // window.alert("YAAAY! YOU GOT IT!");
           setTimeout(this.getRandomSound(), 300000);
         } else {
           this.randomSound.pause();
-          window.alert("OOOPS! TRY IT AGAIN... ;)");
+          // window.alert("OOOPS! TRY IT AGAIN... ;)");
+
+          Swal.fire({
+            position: "top-end",
+            icon: "warning",
+            title: "Try again",
+            showConfirmButton: false,
+            timer: 1500,
+          });
           this.playSound();
         }
       }
