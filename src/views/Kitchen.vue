@@ -40,16 +40,16 @@
 
       <p v-if="gameOn === true" class="score">score : {{ scoreCounter }}</p>
 
-      <button v-if="gameOn === false" @click="playMode" class="btn-play">
+      <button v-if="gameOn === false" @click="playMode" class="btn play">
         Play
       </button>
 
-      <button v-if="gameOn === true" @click="playMode" class="btn-back">
+      <button v-if="gameOn === true" @click="playMode" class="btn back">
         Back
       </button>
 
       <router-link to="/selection">
-        <button v-if="gameOn === false" @click="stopGame" class="btn-back">
+        <button v-if="gameOn === false" @click="stopGame" class="btn back">
           Back
         </button>
       </router-link>
@@ -178,7 +178,6 @@ export default {
 body {
   margin: 0px;
 }
-
 .big-container {
   width: 100vw;
   height: 100vh;
@@ -197,49 +196,30 @@ body {
 .filter {
   filter: blur(3.4px) sepia(0.38) grayscale(0.22) brightness(0.6);
 }
-.btn-play {
+.btn {
   font-family: "Amatic SC", cursive;
-  font-size: 5rem;
-  font-weight: 400;
-  width: 8rem;
-  height: 7rem;
+  font-weight: 700;
   border: none;
-  background-color: red;
+  background-color: #fc4a1a;
   box-shadow: 1px 1px 10px gray;
   border-radius: 10px;
   z-index: 2;
   position: absolute;
-  bottom: 10%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   cursor: pointer;
-  transition: all ease 0.5s;
 }
-.btn-play:hover {
-  background-color: rgb(255, 77, 77);
-  filter: drop-shadow(1px 1px 10px rgb(241, 79, 79));
+.play {
+  font-size: 3rem;
+  width: 7rem;
+  height: 4rem;
+  bottom: 10%;
+  right: 4%;
 }
-.btn-back {
-  font-family: "Amatic SC", cursive;
+.back {
   font-size: 2rem;
-  font-weight: 400;
   width: 4rem;
   height: 3rem;
-  border: none;
-  background-color: red;
-  box-shadow: 1px 1px 10px gray;
-  border-radius: 10px;
-  z-index: 2;
-  position: absolute;
-  bottom: 0;
-  left: 90%;
-  transform: translate(-50%, -50%);
-  cursor: pointer;
-  transition: all ease 0.5s;
-}
-.btn-back:hover {
-  background-color: rgb(255, 77, 77);
-  filter: drop-shadow(1px 1px 10px rgb(241, 79, 79));
+  top: -4%;
+  right: 90%;
 }
 .score {
   position: absolute;
