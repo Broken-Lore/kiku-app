@@ -1,11 +1,11 @@
 <template>
   <div class="box">
-    <router-link to="/dashboard" class="user">User</router-link>
+   
     <div class="button-content">
       <button @click="openModal()" class="modal-button">how to play</button>
     </div>
     <Modal ref="modal"> </Modal>
-
+ <router-link to="/dashboard" class="user">User</router-link>
     <div class="container">
       <router-link to="/kitchen" class="tap">
         <div class="scenes kitchen">
@@ -54,6 +54,8 @@ export default {
   name: "Selection",
   components: {
     Modal,
+    
+    
   },
   methods: {
     openModal() {
@@ -125,28 +127,39 @@ export default {
   display: flex;
   justify-content: flex-end;
   cursor: pointer;
+  background-color: none;
 }
+
 .modal-button {
   text-decoration: none;
   border: none;
-  font-size: 20px;
+  font-size: 2rem;
   color: #fff;
-  background: #30796f;
+  font-weight: 700;
+  background: none;
   padding: 3px;
-  width: 140px;
-  margin-top: 15px;
-  margin-right: 100px;
+  width: 10rem;
+  margin-top: 2rem;
+  margin-right: 3rem;
   border-radius: 10px;
+  font-family: "Amatic SC", cursive;
+  position: absolute;
+  z-index: 10;
 }
 .tap {
   text-decoration: none;
 }
 .user {
   position: absolute;
-  top: 2rem;
-  right: 2rem;
   color: #ffff;
   text-decoration: none;
-  font-size: 40px;
+  font-size: 2rem;
+  width: 4rem;
+  height: 3rem;
+  top: 4%;
+  right: 90%;
+  font-weight: 700;
+  z-index: 10;
 }
+
 </style>
