@@ -1,5 +1,6 @@
 <template>
   <div class="box">
+    <router-link to="/dashboard" class="user">User</router-link>
     <div class="button-content">
       <button @click="openModal()" class="modal-button">how to play</button>
     </div>
@@ -50,7 +51,7 @@
 import Modal from "../components/Modal.vue";
 
 export default {
-  name: "Home",
+  name: "Selection",
   components: {
     Modal,
   },
@@ -139,5 +140,13 @@ export default {
 }
 .tap {
   text-decoration: none;
+}
+.user {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  color: #ffff;
+  text-decoration: none;
+  font-size: 40px;
 }
 </style>
