@@ -1,10 +1,23 @@
 <template>
-  <router-view/>
+  <div id="app">
+    <Navigation />
+    <router-view/>
+  </div>
 </template>
+
+<script>
+import Navigation from '@/components/Navigation.vue'
+export default {
+  components: {
+    Navigation
+  }
+}
+</script>
 
 <style>
 
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
+
 
 #app {
   font-family: 'Amatic SC', cursive;
