@@ -10,7 +10,7 @@
       :class="imgClass"
       :src="images[objectName]"
     />
-    <p class="name">A {{ objectName }}</p>
+    <p class="name">{{ soundObject.name }}</p>
   </div>
 </template>
 
@@ -32,7 +32,6 @@ import panImg from "@/assets/img/pan.png";
 import fridgeImg from "@/assets/img/fridge.png";
 
 export default {
-  name: "SoundObject",
   data: function () {
     return {
       sound: null,
@@ -57,9 +56,11 @@ export default {
       },
     };
   },
-  props: {
-    objectName: String,
-  },
+  props: [
+    "objectName",
+    "soundObject",
+    "gameOn"
+  ],
   computed: {
     imgClass: function () {
       return "img-" + this.objectName;
@@ -68,6 +69,7 @@ export default {
   methods: {
     playSound() {
       if (!this.sound) return;
+      if(this.gameOn === true) return;
       this.sound.paused ? this.sound.play() : this.sound.pause();
     },
     stopSound() {

@@ -42,6 +42,7 @@ export default {
   color: #ffff;
   text-decoration: none;
   font-size: 40px;
+  
 }
 @media (min-width: 1024px) {
   .home {
