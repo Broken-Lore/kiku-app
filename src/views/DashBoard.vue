@@ -1,8 +1,9 @@
 <template>
-  <div class="container">
-    <h1>Mimi's Dashboard</h1>
-    <!-- <DashBoardSounds />
-        <DashBoardScenes /> -->
+   <div class="home">
+    
+    <h1 class="title">welcome to kiku</h1>
+    <img src="../assets/img/logo.png" alt="" class="logoApp" />
+
     <div class="button-content">
       <button @click="openScenes()" class="modal-button">Scenes</button>
       <DashBoardScenes ref="dashBoardScenes"> </DashBoardScenes>
@@ -35,10 +36,16 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  color: black;
+
+@media (min-width: 1024px){
+  .logoApp {
+    width: 15rem;
+    height: 15rem;
+    margin-left: 20px;
+    margin-top: 30px;
+  }
 }
+
+
+
 </style>

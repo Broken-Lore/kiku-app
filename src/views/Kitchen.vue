@@ -4,6 +4,7 @@
       <BreedingRhombusSpinner />
     </div>
     <div class="image-container">
+      
       <img
         v-if="gameOn === false"
         class="base"
@@ -17,6 +18,7 @@
         alt="illustration of a kitchen with its appliances, a cat, a dog and a cook"
       />
       <div v-if="gameOn === false">
+        <router-link to="/dashboard" class="user">User</router-link>
         <div v-for="soundObject in soundObjects" v-bind:key="soundObject">
           <SoundObject
             :objectName="soundObject.name"
@@ -228,5 +230,19 @@ body {
   top: 0rem;
   margin: 1rem 0;
   right: 2rem;
+}
+.user {
+  position: absolute;
+  color: #ffff;
+  text-decoration: none;
+  font-size: 2rem;
+  width: 4rem;
+  height: 3rem;
+  top: 4%;
+  right: 90%;
+  font-weight: 700;
+  z-index: 10;
+  top: -8%;
+  right: 5%;
 }
 </style>
