@@ -133,7 +133,7 @@ export default {
       if (!this.randomSound.ended) {
         Swal.fire({
             position: "center",
-            icon: "warning",
+            icon: "info",
             title: "Please, wait for the sound to finish",
             showConfirmButton: false,
             timer: 1500,
