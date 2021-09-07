@@ -131,14 +131,20 @@ export default {
         clickedSoundId: clickedSoundId,
       };
       if (!this.randomSound.ended) {
-        window.alert("Please, wait for the sound to finish");
+        Swal.fire({
+            position: "center",
+            icon: "warning",
+            title: "Please, wait for the sound to finish",
+            showConfirmButton: false,
+            timer: 1500,
+          });
       } else {
         let response = await gameService.compareSounds(data);
 
         this.assertion = response.data.assertion;
         if (this.assertion) {
           Swal.fire({
-            position: "top-end",
+            position: "center",
             icon: "success",
             title: "Hooray! Correct",
             showConfirmButton: false,
@@ -151,7 +157,7 @@ export default {
           // window.alert("OOOPS! TRY IT AGAIN... ;)");
 
           Swal.fire({
-            position: "top-end",
+            position: "center",
             icon: "warning",
             title: "Try again",
             showConfirmButton: false,
