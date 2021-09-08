@@ -1,12 +1,11 @@
 <template>
   <div class="home">
-    <h1 class="title">{{ user.name }}'s Dashboard</h1>
+    <h1 class="title" v-if="authenticated">{{ user.name }}'s Dashboard</h1>
     <img src="../assets/img/logo.png" alt="" class="logoApp" />
   </div>
 </template>
 
 <script>
-import Navigation from "../components/Navigation";
 import { mapGetters } from "vuex";
 
 export default {

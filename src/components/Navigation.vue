@@ -12,7 +12,7 @@
     </li>
 
     <template v-if="authenticated">
-      <li>{{ user.name }}</li>
+      <li>Welcome, {{ user.name }}!</li>
       <li>
         <router-link
           :to="{
