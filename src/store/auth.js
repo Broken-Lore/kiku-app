@@ -54,7 +54,7 @@ export default {
 
         },
         signOut ( { commit } ) {
-            return axios('').then(() => {
+            return axios.post('http://127.0.0.1:8000/api/auth/logout').then(() => {
                 commit("SET_TOKEN", null)
                 commit("SET_USER", null)
             })
