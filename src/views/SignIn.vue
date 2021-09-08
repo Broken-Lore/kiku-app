@@ -40,7 +40,13 @@ export default {
     }),
     
     submit() {
-      this.signIn(this.form)
+      this.signIn(this.form).then(() => {
+        this.$router.replace({
+          name: 'Selection'
+        })
+      }).catch(() => {
+        console.log('failed')
+      })
     
     }
   }
