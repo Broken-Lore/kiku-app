@@ -42,11 +42,7 @@ export default {
             return
             }
             try {
-                let response = await axios('http://127.0.0.1:8000/api/auth/userInfo', {
-                    headers: {
-                        'Authorization': 'Bearer ' +  access_token
-                    }
-                })
+                let response = await axios('http://127.0.0.1:8000/api/auth/userInfo')
                 
                 commit("SET_USER", response.data)
                 console.log(response.data)

@@ -6,6 +6,7 @@ import Dashboard from '../views/Dashboard.vue'
 import Selection from '../views/Selection.vue'
 import ClipPath from '../views/ClipPath.vue'
 import Kitchen from '../views/Kitchen.vue'
+import store from '@/store'
 
 const routes = [
   {
@@ -26,7 +27,17 @@ const routes = [
   {
     path: '/dashboard',
     name: 'Dashboard',
-    component: Dashboard
+    component: Dashboard,
+    beforeEnter: (to, from, next) => {
+      console.log('middleware')
+      console.log(store.getters)
+      if (!store.getters['auth/authenticated']) {
+        return next({
+          name: 'SignIn'
+        })
+      }
+      next()
+    }
   },
   {
     path: '/kitchen',
