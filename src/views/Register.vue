@@ -40,9 +40,11 @@ export default {
   },
   methods: {
     async submit() {
-      let response = axios.post('http://127.0.0.1:8000/api/auth/register', this.form)
-
-      console.log(response.data);
+      await axios.post('http://127.0.0.1:8000/api/auth/register', this.form).then(() =>{
+        this.$router.replace({
+          name: 'SignIn'
+        })
+      });
     }
   }
 };
