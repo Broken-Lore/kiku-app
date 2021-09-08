@@ -1,32 +1,38 @@
 <template>
   <div class="home">
-    <h1 class="title">Dashboard</h1>
-    <img src="../assets/img/logo.png" alt="" class="logoApp">
+    <h1 class="title">{{ user.name }}'s Dashboard</h1>
+    <img src="../assets/img/logo.png" alt="" class="logoApp" />
   </div>
 </template>
 
 <script>
-
+import Navigation from "../components/Navigation";
+import { mapGetters } from "vuex";
 
 export default {
-  name: 'Dashboard',
-  components: {
+  computed: {
+    ...mapGetters({
+      authenticated: "auth/authenticated",
+      user: "auth/user",
+    }),
+  },
 
-  }
-}
+  name: "Dashboard",
+  components: {},
+};
 </script>
 
 <style scoped>
-.home{
+.home {
   height: 80%;
   z-index: 0;
   display: flex;
 }
 
-.title{
+.title {
   width: 30%;
   margin: 0;
-  font-size :150px;
+  font-size: 150px;
   color: #ffff;
   position: absolute;
   margin-left: 40px;
@@ -34,39 +40,39 @@ export default {
   letter-spacing: 15px;
 }
 
-.logoApp{
+.logoApp {
   width: 35rem;
   height: 35rem;
   margin-left: 400px;
   margin-top: 40px;
 }
 
-.tap{
-  font-family: 'Amatic SC', cursive;
+.tap {
+  font-family: "Amatic SC", cursive;
   color: #ffff;
   font-size: 50px;
   text-decoration: none;
 }
 
-@media (min-width: 1024px){
-  .home{
+@media (min-width: 1024px) {
+  .home {
     display: flex;
     align-items: center;
     margin-left: 130px;
     margin-bottom: 20px;
   }
-  .title{
+  .title {
     position: relative;
     margin-left: 130px;
-    font-size :100px;
+    font-size: 100px;
   }
-  .logoApp{
-  width: 25rem;
-  height: 25rem;
-  margin-left: 20px;
-  margin-top: 60px;
+  .logoApp {
+    width: 25rem;
+    height: 25rem;
+    margin-left: 20px;
+    margin-top: 60px;
   }
-  .tap{
+  .tap {
     position: relative;
     margin-top: 50px;
     font-size: 40px;
