@@ -36,9 +36,13 @@
       </div>
 
       <p v-if="gameOn === true" class="score">score : {{ scoreCounter }}</p>
-      <p v-if="gameOn && authenticated"> game: {{ gameId }}</p>
+      <p v-if="gameOn && authenticated">game: {{ gameId }}</p>
 
-      <button v-if="gameOn === false && authenticated" @click="playMode" class="btn-play">
+      <button
+        v-if="gameOn === false && authenticated"
+        @click="playMode"
+        class="btn-play"
+      >
         Play
       </button>
 
@@ -61,7 +65,6 @@ import { sceneService } from "../services/sceneService.js";
 import { gameService } from "../services/gamesService";
 import { mapGetters } from "vuex";
 
-
 export default {
   computed: {
     ...mapGetters({
@@ -83,9 +86,7 @@ export default {
       randomObject: [],
       randomSound: null,
       assertion: null,
-      gameId: null
-     
- 
+      gameId: null,
     };
   },
   mounted() {
@@ -101,29 +102,19 @@ export default {
     },
 
     async startPlaying() {
-      await gameService.startPlaying();
-      
-    },
-
-    async getGameId() {
-      let response = await gameService.startPlaying()
+      let response = await gameService.startPlaying();
       this.gameId = response.data.id;
       console.log(this.gameId);
       return this.gameId;
-
     },
-
-   /*  async storeInteraction() {
-      let response = await gameService.storeInteraction(data);
-    }, */
 
     playMode() {
       this.gameOn = !this.gameOn;
       this.startPlaying();
-      this.getGameId();
       this.getRandomSound();
       return this.gameOn;
     },
+
     async getRandomSound() {
       if (this.gameOn) {
         let response = await gameService.randomSound(this.sceneId);
@@ -132,7 +123,6 @@ export default {
         this.randomSound = new Audio(this.randomObject.audio);
         console.log(this.randomSound);
         this.playSound();
-        
       }
     },
     playSound() {
@@ -140,20 +130,22 @@ export default {
       this.randomSound.paused
         ? this.randomSound.play()
         : this.randomSound.pause();
-      
     },
+
     async compareSounds(clickedSoundId) {
       var data = {
         randomSoundId: this.randomObject.id,
         clickedSoundId: clickedSoundId,
+        gameId: this.gameId,
       };
-   
+
       if (!this.randomSound.ended) {
         window.alert("Please, wait for the sound to finish");
       } else {
         let response = await gameService.compareSounds(data);
 
         this.assertion = response.data.assertion;
+
         if (this.assertion) {
           window.alert("YAAAY! YOU GOT IT!");
           setTimeout(this.getRandomSound(), 300000);
