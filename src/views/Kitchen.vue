@@ -37,7 +37,7 @@
 
       <p v-if="gameOn === true" class="score">score : {{ scoreCounter }}</p>
 
-      <button v-if="gameOn === false" @click="playMode" class="btn-play">
+      <button v-if="gameOn === false && authenticated" @click="playMode" class="btn-play">
         Play
       </button>
 
@@ -58,8 +58,16 @@
 import SoundObject from "../components/SoundObject.vue";
 import { sceneService } from "../services/sceneService.js";
 import { gameService } from "../services/gamesService";
+import { mapGetters } from "vuex";
+
 
 export default {
+  computed: {
+    ...mapGetters({
+      authenticated: "auth/authenticated",
+      user: "auth/user",
+    }),
+  },
   name: "Kitchen",
   components: {
     SoundObject,
@@ -148,6 +156,8 @@ export default {
   },
 };
 </script>
+
+
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap");
