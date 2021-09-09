@@ -1,6 +1,10 @@
 <template>
   <div class="big-container">
+    <div v-if="loading">
+      <BreedingRhombusSpinner />
+    </div>
     <div class="image-container">
+      
       <img
         v-if="gameOn === false"
         class="base"
@@ -14,6 +18,7 @@
         alt="illustration of a kitchen with its appliances, a cat, a dog and a cook"
       />
       <div v-if="gameOn === false">
+        <router-link to="/dashboard" class="user">User</router-link>
         <div v-for="soundObject in soundObjects" v-bind:key="soundObject">
           <SoundObject
             :objectName="soundObject.name"
@@ -41,12 +46,12 @@
         Play
       </button>
 
-      <button v-if="gameOn === true" @click="playMode" class="btn-back">
+      <button v-if="gameOn === true" @click="playMode" class="btn back">
         Back
       </button>
 
       <router-link to="/selection">
-        <button v-if="gameOn === false" @click="stopGame" class="btn-back">
+        <button v-if="gameOn === false" @click="stopGame" class="btn back">
           Back
         </button>
       </router-link>
@@ -56,6 +61,8 @@
 
 <script>
 import SoundObject from "../components/SoundObject.vue";
+import BreedingRhombusSpinner from "../components/BreedingRhombusSpinner.vue";
+
 import { sceneService } from "../services/sceneService.js";
 import { gameService } from "../services/gamesService";
 import { mapGetters } from "vuex";
@@ -71,9 +78,19 @@ export default {
   name: "Kitchen",
   components: {
     SoundObject,
+    BreedingRhombusSpinner
+  },
+  mounted() {
+    this.getSounds();
+    document.onreadystatechange = () => {
+      if (document.readyState == "complete") {
+        this.isLoaded = true;
+      }
+    };
   },
   data() {
     return {
+      loading: false,
       gameOn: false,
       scoreCounter: 0,
       scores: [10, 5, 3, 1],
@@ -84,15 +101,28 @@ export default {
       assertion: null,
     };
   },
-  mounted() {
-    this.getSounds();
-  },
   methods: {
+    alertDisplay() {
+      this.$refs.form.alertDisplay()
+    },
+    playMode() {
+      this.gameOn = !this.gameOn;
+      this.getRandomSound();
+      return this.gameOn;
+    },
+    playSound() {
+      if (!this.randomSound) return;
+      this.randomSound.paused
+        ? this.randomSound.play()
+        : this.randomSound.pause();
+    },
     async getSounds() {
+      this.loading = true;
       let response = await sceneService.getSoundsbyScene(this.sceneId);
       this.soundObjects = response.data;
       console.log(this.soundObjects);
       let soundName = this.soundObjects[1];
+      this.loading = false;
       console.log(soundName.name);
     },
 
@@ -118,14 +148,8 @@ export default {
         this.playSound();
       }
     },
-    playSound() {
-      if (!this.randomSound) return;
-      this.randomSound.paused
-        ? this.randomSound.play()
-        : this.randomSound.pause();
-    },
     async compareSounds(clickedSoundId) {
-      var data = {
+      let data = {
         randomSoundId: this.randomObject.id,
         clickedSoundId: clickedSoundId,
       };
@@ -136,11 +160,26 @@ export default {
 
         this.assertion = response.data.assertion;
         if (this.assertion) {
-          window.alert("YAAAY! YOU GOT IT!");
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Hooray! Correct",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          // window.alert("YAAAY! YOU GOT IT!");
           setTimeout(this.getRandomSound(), 300000);
         } else {
           this.randomSound.pause();
-          window.alert("OOOPS! TRY IT AGAIN... ;)");
+          // window.alert("OOOPS! TRY IT AGAIN... ;)");
+
+          Swal.fire({
+            position: "top-end",
+            icon: "warning",
+            title: "Try again",
+            showConfirmButton: false,
+            timer: 1500,
+          });
           this.playSound();
         }
       }
@@ -164,7 +203,6 @@ export default {
 body {
   margin: 0px;
 }
-
 .big-container {
   width: 100vw;
   height: 100vh;
@@ -183,49 +221,30 @@ body {
 .filter {
   filter: blur(3.4px) sepia(0.38) grayscale(0.22) brightness(0.6);
 }
-.btn-play {
+.btn {
   font-family: "Amatic SC", cursive;
-  font-size: 5rem;
-  font-weight: 400;
-  width: 8rem;
-  height: 7rem;
+  font-weight: 700;
   border: none;
-  background-color: red;
+  background-color: #fc4a1a;
   box-shadow: 1px 1px 10px gray;
   border-radius: 10px;
   z-index: 2;
   position: absolute;
-  bottom: 10%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   cursor: pointer;
-  transition: all ease 0.5s;
 }
-.btn-play:hover {
-  background-color: rgb(255, 77, 77);
-  filter: drop-shadow(1px 1px 10px rgb(241, 79, 79));
+.play {
+  font-size: 3rem;
+  width: 7rem;
+  height: 4rem;
+  bottom: 10%;
+  right: 4%;
 }
-.btn-back {
-  font-family: "Amatic SC", cursive;
+.back {
   font-size: 2rem;
-  font-weight: 400;
   width: 4rem;
   height: 3rem;
-  border: none;
-  background-color: red;
-  box-shadow: 1px 1px 10px gray;
-  border-radius: 10px;
-  z-index: 2;
-  position: absolute;
-  bottom: 0;
-  left: 90%;
-  transform: translate(-50%, -50%);
-  cursor: pointer;
-  transition: all ease 0.5s;
-}
-.btn-back:hover {
-  background-color: rgb(255, 77, 77);
-  filter: drop-shadow(1px 1px 10px rgb(241, 79, 79));
+  top: -4%;
+  right: 90%;
 }
 .score {
   position: absolute;
@@ -234,5 +253,19 @@ body {
   top: 0rem;
   margin: 1rem 0;
   right: 2rem;
+}
+.user {
+  position: absolute;
+  color: #ffff;
+  text-decoration: none;
+  font-size: 2rem;
+  width: 4rem;
+  height: 3rem;
+  top: 4%;
+  right: 90%;
+  font-weight: 700;
+  z-index: 10;
+  top: -8%;
+  right: 5%;
 }
 </style>

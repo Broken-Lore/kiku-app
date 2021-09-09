@@ -77,10 +77,12 @@ export default {
 
 <style scoped>
 .navbar{
-    font: 'Amatic SC', cursive,white,40px;
+    font-family: 'Amatic SC', cursive,40px;
     position:absolute;
-    display: inline-flex;
+    display:flex;
     justify-content: space-between;
+    flex-direction: row;
+
 }
 
 
