@@ -11,6 +11,10 @@ export const gameService = {
 
     compareSounds(data){
         return axios.post(baseUrl + "/compare", data)
+    },
+
+    startPlaying(){
+        return axios.get(baseUrl + '/newGame')
     }
 }
 

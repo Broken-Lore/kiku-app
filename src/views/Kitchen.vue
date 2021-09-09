@@ -87,8 +87,16 @@ export default {
       let soundName = this.soundObjects[1];
       console.log(soundName.name);
     },
+
+    async startPlaying() {
+      let response = await gameService.startPlaying();
+      
+
+    },
+
     playMode() {
       this.gameOn = !this.gameOn;
+      this.startPlaying();
       this.getRandomSound();
       return this.gameOn;
     },
