@@ -1,7 +1,7 @@
 <template>
 <div>
   <ul class="navbar">
-    <li>
+    <li class="home">
       <router-link
         :to="{
           name: 'Home',
@@ -77,11 +77,11 @@ export default {
 
 <style scoped>
 .navbar{
-    font-family: 'Amatic SC', cursive;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    text-decoration: none;
-    
+    font: 'Amatic SC', cursive,white,40px;
+    position:absolute;
+    display: inline-flex;
+    justify-content: space-between;
 }
+
+
 </style>

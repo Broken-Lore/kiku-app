@@ -1,9 +1,6 @@
 <template>
   <div class="box">
-    <div class="button-content">
-      <button @click="openModal()" class="modal-button">how to play</button>
-    </div>
-    <Modal ref="modal"> </Modal>
+    
 
     <div class="container">
       <router-link to="/kitchen" class="tap">
