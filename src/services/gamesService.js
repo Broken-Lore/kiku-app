@@ -15,7 +15,12 @@ export const gameService = {
 
     startPlaying(){
         return axios.get(baseUrl + '/newGame')
-    }
+    },
+
+   /*  storeInteraction(data) {
+        return axios.post(baseUrl + '/newInteraction', data)
+    } */
+
 }
 
 

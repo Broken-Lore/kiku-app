@@ -36,6 +36,7 @@
       </div>
 
       <p v-if="gameOn === true" class="score">score : {{ scoreCounter }}</p>
+      <p v-if="gameOn && authenticated"> game: {{ gameId }}</p>
 
       <button v-if="gameOn === false && authenticated" @click="playMode" class="btn-play">
         Play
@@ -82,6 +83,9 @@ export default {
       randomObject: [],
       randomSound: null,
       assertion: null,
+      gameId: null
+     
+ 
     };
   },
   mounted() {
@@ -97,14 +101,26 @@ export default {
     },
 
     async startPlaying() {
-      let response = await gameService.startPlaying();
+      await gameService.startPlaying();
       
+    },
+
+    async getGameId() {
+      let response = await gameService.startPlaying()
+      this.gameId = response.data.id;
+      console.log(this.gameId);
+      return this.gameId;
 
     },
+
+   /*  async storeInteraction() {
+      let response = await gameService.storeInteraction(data);
+    }, */
 
     playMode() {
       this.gameOn = !this.gameOn;
       this.startPlaying();
+      this.getGameId();
       this.getRandomSound();
       return this.gameOn;
     },
@@ -116,6 +132,7 @@ export default {
         this.randomSound = new Audio(this.randomObject.audio);
         console.log(this.randomSound);
         this.playSound();
+        
       }
     },
     playSound() {
@@ -123,12 +140,14 @@ export default {
       this.randomSound.paused
         ? this.randomSound.play()
         : this.randomSound.pause();
+      
     },
     async compareSounds(clickedSoundId) {
       var data = {
         randomSoundId: this.randomObject.id,
         clickedSoundId: clickedSoundId,
       };
+   
       if (!this.randomSound.ended) {
         window.alert("Please, wait for the sound to finish");
       } else {
