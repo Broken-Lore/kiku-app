@@ -144,17 +144,26 @@ export default {
       } else {
         let response = await gameService.compareSounds(data);
 
+        if (response.data == "done") {
+          console.log(response);
+          window.alert("Good job! Play again or select a new scene :)");
+          this.gameOn = !this.gameOn;
+        } else {
+
         this.assertion = response.data.assertion;
 
         if (this.assertion) {
+          this.randomSound.pause();
           window.alert("YAAAY! YOU GOT IT!");
           setTimeout(this.getRandomSound(), 300000);
-        } else {
+        }
+
+        if (!this.assertion) {
           this.randomSound.pause();
           window.alert("OOOPS! TRY IT AGAIN... ;)");
           this.playSound();
         }
-      }
+      }}
     },
     scoreMount(clickCount) {
       if (!this.assertion) return;
