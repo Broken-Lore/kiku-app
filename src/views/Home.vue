@@ -1,6 +1,10 @@
 <template>
   <div class="home">
-    <router-link to="/dashboard" class="user">User</router-link>
+     <div class="button-content">
+      <button @click="openModal()" class="modal-button">how to play</button>
+    </div>
+    <Modal ref="modal"> </Modal>
+    
     <h1 class="title">welcome to kiku</h1>
     <img src="../assets/img/logo.png" alt="" class="logoApp" />
   </div>
@@ -8,9 +12,20 @@
 </template>
 
 <script>
+import Modal from "../components/Modal.vue";
 export default {
   name: "Home",
-  components: {},
+  components: {
+    Modal,
+  },
+ 
+
+methods: {
+    openModal(){
+      const modal = document.getElementById("modal");
+      modal.classList.add("show");
+    },
+},
 };
 </script>
 
@@ -72,5 +87,23 @@ export default {
     top: 2rem;
     right: 2rem;
   }
+  .modal-button {
+  text-decoration: none;
+  border: none;
+  font-size: 22px;
+  color: #fff;
+  font-weight: 700;
+  background: none;
+  padding: 3px;
+  width: 10rem;
+  margin-top: 2rem;
+  margin-right: 3rem;
+  border-radius: 10px;
+  font-family: "Amatic SC", cursive;
+  position: absolute;
+  z-index: 10;
+  top:1%;
+  left:80%;
+}
 }
 </style>

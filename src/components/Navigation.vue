@@ -1,7 +1,7 @@
 <template>
 <div>
   <ul class="navbar">
-    <li class="home">
+    <ul>
       <router-link
         :to="{
           name: 'Home',
@@ -9,11 +9,11 @@
       >
         Home</router-link
       >
-    </li>
+    </ul>
 
     <template v-if="authenticated">
-      <li>Welcome, {{ user.name }}!</li>
-      <li>
+      <ul>Welcome, {{ user.name }}!</ul>
+      <ul>
         <router-link
           :to="{
             name: 'Dashboard',
@@ -21,15 +21,15 @@
         >
           Dashboard</router-link
         >
-      </li>
-      <li>
+      </ul>
+      <ul>
         <a href="#" @click.prevent="signOut">
           Sign Out
         </a>
-      </li>
+      </ul>
     </template>
     <template v-else>
-      <li>
+      <ul class="nav">
         <router-link
           :to="{
             name: 'Register',
@@ -37,8 +37,8 @@
         >
           Register</router-link
         >
-      </li>
-      <li>
+      </ul>
+      <ul>
         <router-link
           :to="{
             name: 'SignIn',
@@ -46,7 +46,7 @@
         >
           Sign In</router-link
         >
-      </li>
+      </ul>
     </template>
   </ul>
   </div>
@@ -77,13 +77,18 @@ export default {
 
 <style scoped>
 .navbar{
-    font-family: 'Amatic SC', cursive,40px;
+    font-family: 'Amatic SC', cursive;
     position:absolute;
-    display:flex;
-    justify-content: space-between;
     flex-direction: row;
-
+    font-size:17px ;
+    text-decoration-color: aliceblue !important;
+    color: aliceblue;
 }
+a {
+  color: #FFF;
+  text-decoration: none;
+}
+
 
 
 </style>

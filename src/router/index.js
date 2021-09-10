@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Register from '../views/Register.vue'
 import SignIn from '../views/SignIn.vue'
-import Dashboard from '../views/Dashboard.vue'
 import Selection from '../views/Selection.vue'
 import Kitchen from '../views/Kitchen.vue'
 import store from '@/store'
@@ -26,8 +25,8 @@ const routes = [
   },
   {
     path: '/dashboard',
-    name: 'Dashboard',
-    component: Dashboard,
+    name: 'DashBoard',
+    component: DashBoard,
     beforeEnter: (to, from, next) => {
       console.log('middleware')
       console.log(store.getters)

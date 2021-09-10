@@ -5,7 +5,7 @@
       <button @click="openModal()" class="modal-button">how to play</button>
     </div>
     <Modal ref="modal"> </Modal>
- <router-link to="/dashboard" class="user">User</router-link>
+ 
     <div class="container">
       <router-link to="/kitchen" class="tap">
         <div class="scenes kitchen">
@@ -133,7 +133,7 @@ export default {
 .modal-button {
   text-decoration: none;
   border: none;
-  font-size: 2rem;
+  font-size: 22px;
   color: #fff;
   font-weight: 700;
   background: none;
