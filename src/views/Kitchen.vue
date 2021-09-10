@@ -91,9 +91,7 @@ export default {
     async getSounds() {
       let response = await sceneService.getSoundsbyScene(this.sceneId);
       this.soundObjects = response.data;
-      console.log(this.soundObjects);
       let soundName = this.soundObjects[1];
-      console.log(soundName.name);
     },
 
     async startPlaying() {
@@ -114,7 +112,6 @@ export default {
         this.randomObject = response.data;
         console.log(this.randomObject.id);
         this.randomSound = new Audio(this.randomObject.audio);
-        console.log(this.randomSound);
         this.playSound();
       }
     },
