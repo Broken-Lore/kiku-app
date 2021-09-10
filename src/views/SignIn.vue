@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <form @submit.prevent="submit">
-      {{form}}
+    
       <div>
         <label for="email">Email</label>
         <input type="text" name="email" id="email" v-model="form.email">

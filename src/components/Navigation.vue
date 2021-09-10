@@ -80,7 +80,7 @@ export default {
     font-family: 'Amatic SC', cursive;
     position:absolute;
     flex-direction: row;
-    font-size:17px ;
+    font-size:12px ;
     text-decoration-color: aliceblue !important;
     color: aliceblue;
 }

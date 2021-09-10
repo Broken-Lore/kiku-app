@@ -160,7 +160,7 @@ export default {
         this.assertion = response.data.assertion;
         if (this.assertion) {
           Swal.fire({
-            position: "top-end",
+            position: "center",
             icon: "success",
             title: "Hooray! Correct",
             showConfirmButton: false,
@@ -173,7 +173,7 @@ export default {
           // window.alert("OOOPS! TRY IT AGAIN... ;)");
 
           Swal.fire({
-            position: "top-end",
+            position: "center",
             icon: "warning",
             title: "Try again",
             showConfirmButton: false,

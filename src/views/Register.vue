@@ -2,7 +2,7 @@
   <div class="home">
     <form @submit.prevent="submit">
       {{form}}
-       <div>
+       <div class="">
         <label for="name">Name</label>
         <input type="text" name="name" id="name" v-model="form.name">
       </div>
