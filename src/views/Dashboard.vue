@@ -18,7 +18,7 @@ import DashBoardScenes from "../components/DashBoardScenes.vue";
 import DashBoardSounds from "../components/DashBoardSounds.vue";
 
 export default {
-  name: "DashBoard",
+  name: 'DashBoard',
   components: { DashBoardSounds, DashBoardScenes },
   methods: {
     openScenes() {

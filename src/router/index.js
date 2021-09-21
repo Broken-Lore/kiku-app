@@ -28,8 +28,6 @@ const routes = [
     name: 'DashBoard',
     component: DashBoard,
     beforeEnter: (to, from, next) => {
-      console.log('middleware')
-      console.log(store.getters)
       if (!store.getters['auth/authenticated']) {
         return next({
           name: 'SignIn'
@@ -48,13 +46,8 @@ const routes = [
     name: 'Selection',
     component: Selection
   },
-  {
-    path: '/dashboard',
-    name: 'DashBoard',
-    component: DashBoard
-  },
-]
 
+]
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
