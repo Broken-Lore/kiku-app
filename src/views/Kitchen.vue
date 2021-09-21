@@ -98,6 +98,7 @@ export default {
       randomObject: [],
       randomSound: null,
       assertion: null,
+      gameId: null,
     };
   },
   methods: {
@@ -127,8 +128,7 @@ export default {
 
     async startPlaying() {
       let response = await gameService.startPlaying();
-      
-
+      this.gameId = response.data;
     },
 
     playMode() {
@@ -151,6 +151,7 @@ export default {
       let data = {
         randomSoundId: this.randomObject.id,
         clickedSoundId: clickedSoundId,
+        gameId: this.gameId, 
       };
       if (!this.randomSound.ended) {
         window.alert("Please, wait for the sound to finish");

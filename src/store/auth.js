@@ -34,15 +34,17 @@ export default {
 
         async attempt({ commit, state }, access_token) {
 
+
+            
             if(access_token){
                 commit("SET_TOKEN", access_token)
                 console.log(access_token);
             }
             if(!state.access_token){
-            return
-            }
+                return
+                }
             try {
-                let response = await axios('http://127.0.0.1:8000/api/auth/userInfo')
+                let response = await axios.post('http://127.0.0.1:8000/api/auth/userInfo')
                 
                 commit("SET_USER", response.data)
                 console.log(response.data)
