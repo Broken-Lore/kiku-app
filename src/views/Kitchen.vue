@@ -62,9 +62,7 @@
 import SoundObject from "../components/SoundObject.vue";
 import BreedingRhombusSpinner from "../components/BreedingRhombusSpinner.vue";
 
-import { sceneService } from "../services/sceneService.js";
-import { gameService } from "../services/gamesService";
-import { mapGetters } from "vuex";
+
 
 
 export default {
@@ -90,7 +88,7 @@ export default {
   data() {
     return {
       loading: false,
-      gameOn: false,
+      
       scoreCounter: 0,
       scores: [10, 5, 3, 1],
       soundObjects: [],
